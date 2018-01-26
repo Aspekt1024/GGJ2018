@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Planet
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 973366305
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Transmission
+    uniqueID: 1329075263
+    locked: 0
+  - name: Planet
+    uniqueID: 940256465
+    locked: 0
+  - name: UI
+    uniqueID: 4067429357
     locked: 0

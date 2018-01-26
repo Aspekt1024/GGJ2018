@@ -6,6 +6,19 @@ using System;
 public class GameManager : MonoBehaviour {
     
     [HideInInspector] public static GameManager Instance;
+    private SymbolHandler symbolHandler;
+
+    public SymbolHandler SymbolHandler
+    {
+        get { return symbolHandler; }
+    }
+    
+    public Player Player
+    {
+        get { return player; }
+    }
+
+    private Player player;
 
     private enum States
     {
@@ -25,9 +38,12 @@ public class GameManager : MonoBehaviour {
         else
         {
             Destroy(gameObject);
+            return;
         }
         DontDestroyOnLoad(gameObject);
 
+        symbolHandler = GetComponent<SymbolHandler>();
+        player = FindObjectOfType<Player>();
         inputHandler = new InputHandler(this);
         state = States.Playing;
 	}
