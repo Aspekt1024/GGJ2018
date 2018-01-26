@@ -57,14 +57,13 @@ public class Planet : MonoBehaviour {
         {
             return null;
         }
-
-        Symbols[] allSymbols = symbolHandler.Symbols;
-        int symbolIndex = Random.Range(0, allSymbols.Length);
-        while (symbolDict.ContainsKey(allSymbols[symbolIndex]))
+        
+        int symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
+        while (symbolDict.ContainsKey(symbolHandler.Symbols[symbolIndex]))
         {
-            symbolIndex = Random.Range(0, allSymbols.Length);
+            symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
         }
-        return allSymbols[symbolIndex];
+        return symbolHandler.Symbols[symbolIndex];
     }
 
 }
