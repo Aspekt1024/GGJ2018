@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour {
 
+    private float zoomTimer = 0f;
+    private float ZoomDuration = 1f;
+    private float targetSize = 6;
+    private float startOrthSize;
+
+
     public GameObject mainPanel;
     public GameObject optionsPanel;
     public AudioMixer mixer;
@@ -16,32 +22,52 @@ public class MenuHandler : MonoBehaviour {
 
     private void Awake()
     {
+        startOrthSize = Camera.main.orthographicSize;
         musicSlider = GameObject.Find("Music Volume").GetComponent<Slider>();
         soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
     }
 
+    private void Update()
+    {}
+
+    private IEnumerator StartGame()
+    {
+        while (zoomTimer < ZoomDuration)
+        {
+            zoomTimer += Time.deltaTime;
+            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            yield return null;
+        }
+        this.gameObject.SetActive(false);
+    }
+
+
     public void OnClickStart(string lvl)
     {
         //Setup as basic lvl loading
-        SceneManager.LoadScene(lvl);
+        SoundBites.Instance.PlayTransmissionSent();
+        StartCoroutine(StartGame());
     }
 
     public void OnClickOptions()
     {
+        SoundBites.Instance.PlayMenuButton();
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
     public void OnClickBack()
     {
+        SoundBites.Instance.PlayMenuButton();
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
     }
 
     public void OnClickQuit()
     {
+        SoundBites.Instance.PlayMenuButton();
         Application.Quit();
     }
 
