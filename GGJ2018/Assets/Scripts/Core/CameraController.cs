@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour {
 
     private void Start()
     {
+        Camera.main.orthographicSize = scaleLevels[0];
+            
     }
 
     private void Update()
