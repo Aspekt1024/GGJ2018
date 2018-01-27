@@ -7,7 +7,7 @@ public class SymbolGenerator : MonoBehaviour {
     private BtnSymbol[] availableSymbols;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         availableSymbols = GetComponentsInChildren<BtnSymbol>();
     }
 	
