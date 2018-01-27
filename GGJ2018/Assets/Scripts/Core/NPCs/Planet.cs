@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Planet : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Planet : MonoBehaviour {
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
     public Transform PlanetPrefab;
+    public Text PlanetNameText;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
@@ -17,6 +19,7 @@ public class Planet : MonoBehaviour {
     private void Awake()
     {
         symbolDict = new Dictionary<Symbols, int>();
+        PlanetNameText.text = PlanetName;
     }
 
     private void Start()

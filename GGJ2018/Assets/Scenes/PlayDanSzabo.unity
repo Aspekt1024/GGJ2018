@@ -1307,7 +1307,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -1316,7 +1316,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: 4
+      value: Roswietania
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -1471,6 +1475,23 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
+        type: 2}
+      propertyPath: PlanetName
+      value: Skeolia
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002961280438686, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822155609783278, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171534554292214, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
   m_IsPrefabParent: 0
@@ -1552,7 +1573,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -1561,7 +1582,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: Planet2
+      value: Xuplomia
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -2775,7 +2800,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -2784,7 +2809,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: Planet3
+      value: Skuzastea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -2969,7 +2998,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -2978,7 +3007,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: 5
+      value: Drion LE0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -3256,7 +3289,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -3265,7 +3298,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: 8
+      value: Tiyrus
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -3439,7 +3476,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -3448,7 +3485,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: Plabnetjfas
+      value: Sporia 7U
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
@@ -4461,7 +4502,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759374392194660, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
       propertyPath: m_Name
@@ -4470,7 +4511,11 @@ Prefab:
     - target: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
         type: 2}
       propertyPath: PlanetName
-      value: 6
+      value: Glade PXBJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106161986258036, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
