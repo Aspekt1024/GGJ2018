@@ -7,11 +7,10 @@ public class CameraController : MonoBehaviour {
     public float IntervalTime = 10f;
     public float ZoomDuration = 1f;
 
-    private int levelCount;
+    private int levelCount = 0;
     private int[] scaleLevels = {6, 10, 14, 18 };
     private float targetSize = 0;
-    private float tParam = 0;
-    float timer = 0f;
+    private float timer = 0f;
 
     private void Start()
     {
@@ -19,7 +18,9 @@ public class CameraController : MonoBehaviour {
 
     private void Update()
     {
+        if (levelCount >+ scaleLevels.Length) return;
         timer += Time.deltaTime;
+
         if (timer >= IntervalTime)
         {
             targetSize = scaleLevels[levelCount];
