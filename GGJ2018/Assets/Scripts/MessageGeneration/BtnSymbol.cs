@@ -10,11 +10,11 @@ public class BtnSymbol : MonoBehaviour {
     Toggle toggleState;
 
     private bool state = false;
+    private bool hasBeenAdded = false;
 
-    private void Start()
+    private void Awake()
     {
         toggleState = GetComponent<Toggle>();
-        setSymbol(symbol);
     }
 
     public void setSymbol(Symbols symbols)
@@ -30,19 +30,23 @@ public class BtnSymbol : MonoBehaviour {
 
         if (state)
             SetStateOn();
-        else
+        else if (hasBeenAdded)
+        {
             SetStateOff();
+        }
 
         selection.printSize();
     }
 
     private void SetStateOn()
     {
+        if (selection.isFull()) return;
+
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.green;
         toggleState.colors = cb;
-        if (!selection.isFull())
-            selection.addSymbol(symbol);
+        selection.addSymbol(symbol);
+        hasBeenAdded = true;
     }
 
     private void SetStateOff()
@@ -51,5 +55,6 @@ public class BtnSymbol : MonoBehaviour {
         cb.normalColor = cb.highlightedColor = Color.white;
         toggleState.colors = cb;
         selection.removeSymbol(symbol);
+        hasBeenAdded = false;
     }
 }

@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class SymbolHandler : MonoBehaviour {
 
-    public int NumSymbolsToLoad = 2;
-    
-    [HideInInspector] public Symbols[] Symbols;
-    
-    private void Start()
+    private Symbols[] symbols;
+
+    private void Awake()
     {
-        Symbols[] symbols = Resources.LoadAll<Symbols>("Symbols");
+        symbols = Resources.LoadAll<Symbols>("Symbols");
     }
 
-    public Symbols GetSymbols(string symbolName)
+    public Symbols[] GetAllSymbols()
     {
-        for (int i = 0; i < Symbols.Length; i++)
+        return symbols;
+    }
+
+    public Symbols GetSymbol(string symbolName)
+    {
+        for (int i = 0; i < symbols.Length; i++)
         {
-            if (Symbols[i].Name == symbolName)
+            if (symbols[i].Name == symbolName)
             {
-                return Symbols[i];
+                return symbols[i];
             }
         }
         return null;

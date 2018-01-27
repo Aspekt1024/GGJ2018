@@ -22,7 +22,7 @@ public class Planet : MonoBehaviour {
         SetSymbolDict();
     }
 
-    public void GiveMessage(HashSet<Symbols> symbols)
+    public void GiveMessage(List<Symbols> symbols)
     {
         int messageOpinion = 0;
         foreach (Symbols symbol in symbols)
@@ -57,17 +57,17 @@ public class Planet : MonoBehaviour {
 
     private Symbols GetNewSymbol()
     {
-        if (symbolHandler.Symbols.Length == symbolDict.Count)
+        if (symbolHandler.GetAllSymbols().Length == symbolDict.Count)
         {
             return null;
         }
         
-        int symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
-        while (symbolDict.ContainsKey(symbolHandler.Symbols[symbolIndex]))
+        int symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
+        while (symbolDict.ContainsKey(symbolHandler.GetAllSymbols()[symbolIndex]))
         {
-            symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
+            symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
         }
-        return symbolHandler.Symbols[symbolIndex];
+        return symbolHandler.GetAllSymbols()[symbolIndex];
     }
 
 }

@@ -3,9 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Menu : MonoBehaviour {
-
-    public void SendTransmissionClicked()
-    {
-        GameManager.Instance.Player.SendTransmission();
-    }
+    
 }

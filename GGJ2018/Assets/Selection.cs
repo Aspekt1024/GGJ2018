@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
+    public Image[] SelectionList;
+    public int numSymbols;
+
     private List<Symbols> symbolsList = new List<Symbols>();
-    private Image[] imageList;
     private int imageCount = 0;
 
-    public int numSymbols;
 
     private void Start()
     {
-        imageList = GetComponentsInChildren<Image>();
     }
 
 
@@ -27,7 +27,7 @@ public class Selection : MonoBehaviour {
         symbolsList.Add(symbols);
         if(imageCount <= numSymbols)
         {
-            imageList[imageCount].sprite = symbols.Sprite;
+            SelectionList[imageCount].sprite = symbols.Sprite;
             imageCount++;
         }
     }
@@ -35,7 +35,7 @@ public class Selection : MonoBehaviour {
     public void removeSymbol(Symbols symbols)
     {
         symbolsList.Remove(symbols);
-        imageList[imageCount-1].sprite = null;
+        SelectionList[imageCount-1].sprite = null;
         imageCount--;
     }
 
@@ -49,9 +49,9 @@ public class Selection : MonoBehaviour {
         print(symbolsList.Count);
     }
 
-    public List<Symbols> OnSubmit()
+    public void OnSubmit()
     {
-        return symbolsList;
+        GameManager.Instance.Player.SendTransmission(symbolsList);
     }
 
 }
