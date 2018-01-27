@@ -11,8 +11,7 @@ public class MenuHandler : MonoBehaviour {
     private float ZoomDuration = 1f;
     private float targetSize = 6;
     private float startOrthSize;
-
-
+    
     public GameObject mainPanel;
     public GameObject optionsPanel;
     public AudioMixer mixer;
