@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameUI : MonoBehaviour {
-
+    
+    public EndGameUI EndGameUI;
     public LogUI LogUI;
     public Selection SelectionHandler;
 
@@ -18,6 +19,7 @@ public class GameUI : MonoBehaviour {
         else
         {
             Destroy(this);
+            return;
         }
     }
 

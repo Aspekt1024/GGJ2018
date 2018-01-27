@@ -22,7 +22,13 @@ public class GameManager : MonoBehaviour {
     
     public Player Player
     {
-        get { return player; }
+        get {
+            if (player == null)
+            {
+                player = FindObjectOfType<Player>();
+            }
+            return player;
+        }
     }
 
     private Player player;
