@@ -93,7 +93,7 @@ public class Selection : MonoBehaviour {
 
     public void OnSubmit()
     {
-        SoundBites.Instance.PlayTransmissionSent();
+        
         int numSelectedSymbols = 0;
         for (int i = 0; i < symbolsList.Count; i++)
         {
@@ -105,6 +105,7 @@ public class Selection : MonoBehaviour {
 
         if (numSelectedSymbols == numSymbols)
         {
+            SoundBites.Instance.PlayTransmissionSent();
             GameManager.Instance.Player.SendTransmission(symbolsList);
             resetList();
             RepositionSelections();

@@ -30,59 +30,39 @@ public class SoundBites : MonoBehaviour {
 
     public void PlayDeselectSymbol()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[1];
-            audioSource.Play();
-        }
+            audioSource.PlayOneShot(soundEffects[1]);
     }
     public void PlayCannotPlace()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[0];
-            audioSource.Play();
-        }
+            audioSource.PlayOneShot(soundEffects[0]);
     }
     public void PlayDislike()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[2];
-            audioSource.Play();
-        }
+
+            audioSource.PlayOneShot(soundEffects[2]);
+
     }
     public void PlayLike()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[3];
-            audioSource.Play();
-        }
+
+            audioSource.PlayOneShot(soundEffects[3]);
+
     }
     public void PlayMenuButton()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[4];
-            audioSource.Play();
-        }
+
+            audioSource.PlayOneShot(soundEffects[4]);
+
     }
     public void PlaySelectSymbol()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[5];
-            audioSource.Play();
-        }
+            audioSource.PlayOneShot(soundEffects[5]);
     }
     public void PlayTransmissionSent()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundEffects[6];
-            audioSource.Play();
-        }
+
+            audioSource.PlayOneShot(soundEffects[6]);
+
     }
  
 }
