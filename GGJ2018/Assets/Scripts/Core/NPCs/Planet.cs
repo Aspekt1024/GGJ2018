@@ -6,8 +6,10 @@ public class Planet : MonoBehaviour {
 
     public string PlanetName = "Planet";
     public int NumSymbols = 2;
+    public bool ShowThoughts = false;
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
+    public PlanetThoughts ThoughtsScript;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
@@ -20,9 +22,10 @@ public class Planet : MonoBehaviour {
         symbolHandler = GameManager.Instance.SymbolHandler;
         symbolDict = new Dictionary<Symbols, int>();
         SetSymbolDict();
+        ThoughtsScript.SetThoughts(symbolDict);
     }
 
-    public void GiveMessage(HashSet<Symbols> symbols)
+    public void GiveMessage(List<Symbols> symbols)
     {
         int messageOpinion = 0;
         foreach (Symbols symbol in symbols)
@@ -57,17 +60,17 @@ public class Planet : MonoBehaviour {
 
     private Symbols GetNewSymbol()
     {
-        if (symbolHandler.Symbols.Length == symbolDict.Count)
+        if (symbolHandler.GetAllSymbols().Length == symbolDict.Count)
         {
             return null;
         }
         
-        int symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
-        while (symbolDict.ContainsKey(symbolHandler.Symbols[symbolIndex]))
+        int symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
+        while (symbolDict.ContainsKey(symbolHandler.GetAllSymbols()[symbolIndex]))
         {
-            symbolIndex = Random.Range(0, symbolHandler.Symbols.Length);
+            symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
         }
-        return symbolHandler.Symbols[symbolIndex];
+        return symbolHandler.GetAllSymbols()[symbolIndex];
     }
 
 }
