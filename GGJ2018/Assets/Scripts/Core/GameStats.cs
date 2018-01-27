@@ -63,7 +63,7 @@ public class GameStats : MonoBehaviour
     {
         numBlocks++;
         blocks.Add(planet);
-        if (EndGameAfterBlocks && numBlocks == NumBlocksBeforeEnd)
+        if (EndGameAfterBlocks && numBlocks >= NumBlocksBeforeEnd)
         {
             Debug.Log("END OF GAME - ALL THE BLOCKS!!!!");
         }
@@ -83,7 +83,7 @@ public class GameStats : MonoBehaviour
     public void SentTransmission()
     {
         numTransmissionsSent++;
-        if (EndGameAfterTransmissions && numTransmissionsSent > NumTransmissionsBeforeEnd)
+        if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
         {
             Debug.Log("END OF GAME!");
         }

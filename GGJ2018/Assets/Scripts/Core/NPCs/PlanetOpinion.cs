@@ -49,14 +49,14 @@ public class PlanetOpinion : MonoBehaviour {
         this.opinion = opinion;
         if (opinion > FriendsValue)
         {
-            GameStats.Instance.AddFriend(GetComponent<Planet>());
+            GameStats.Instance.AddFriend(GetComponentInParent<Planet>());
             state = States.Friends;
         }
         else if (opinion > HappyValue)
         {
             if (state == States.Friends)
             {
-                GameStats.Instance.RemoveFriend(GetComponent<Planet>());
+                GameStats.Instance.RemoveFriend(GetComponentInParent<Planet>());
             }
             state = States.Happy;
         }
@@ -74,7 +74,7 @@ public class PlanetOpinion : MonoBehaviour {
         }
         else
         {
-            GameStats.Instance.AddBlock(GetComponent<Planet>());
+            GameStats.Instance.AddBlock(GetComponentInParent<Planet>());
             state = States.Blocked;
         }
         UpdateOpinionGraphic();

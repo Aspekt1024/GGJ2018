@@ -19,5 +19,6 @@ public class TransmissionHandler : MonoBehaviour {
         Transmission newTransmission = ObjectPooler.Instance.GetPooledObject(ObjectPooler.Pools.Transmission.ToString()).GetComponent<Transmission>();
         newTransmission.Activate(TransmissionSpeed, TransmissionDuration, symbols);
         controller.addTransmission();
+        GameStats.Instance.SentTransmission();
     }
 }
