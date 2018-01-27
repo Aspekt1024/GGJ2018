@@ -24,6 +24,7 @@ public class Transmission : MonoBehaviour {
     public void Activate(float speed, float duration)
     {
         gameObject.SetActive(true);
+        planetsHit = new HashSet<Planet>();
         growSpeed = speed;
         this.duration = duration;
         size = 0f;
