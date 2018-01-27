@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Helpers {
-    
+public static class Helpers
+{
+
     public enum Layer
     {
         Planet, Player

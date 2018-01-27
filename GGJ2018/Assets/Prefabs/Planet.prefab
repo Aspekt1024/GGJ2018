@@ -453,7 +453,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419428176956992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.7, y: 6.3, z: 0}
+  m_LocalPosition: {x: 2.6, y: 1.99, z: 0.33203125}
   m_LocalScale: {x: 8.516169, y: 8.516167, z: 8.516167}
   m_Children:
   - {fileID: 4080704923477916}
@@ -549,17 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowResponseDuration: 2
-  VeryPositiveResponseImage: {fileID: 21300000, guid: f7117f8f9691ddc4582daddace13eefb,
-    type: 3}
-  PositiveResponseImage: {fileID: 21300000, guid: 924a73e505f52424ca4a3d1ce1a23b32,
-    type: 3}
-  NeutralResponseImage: {fileID: 21300000, guid: 8603a1ceb7d55824eb5e929163e463a5,
-    type: 3}
-  NegativeResponseImage: {fileID: 21300000, guid: d302a6394f43d4549b88aeee17ee0778,
-    type: 3}
-  VeryNegativeResponseImage: {fileID: 21300000, guid: 7457f8a4649bee24ba7372fab266d1a9,
-    type: 3}
-  ResponseImage: {fileID: 212308745812204872}
+  ResponseAnimator: {fileID: 95231438940664420}
 --- !u!114 &114857048366412130
 MonoBehaviour:
   m_ObjectHideFlags: 1

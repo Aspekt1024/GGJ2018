@@ -7,7 +7,7 @@ public class Logger : MonoBehaviour {
     public static Logger Instance;
     // TODO num logs to store
     
-    public struct LogEntry
+    public class LogEntry
     {
         public Planet Planet;
         public Symbols[] MessageReceived;
