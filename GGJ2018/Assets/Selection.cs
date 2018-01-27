@@ -25,6 +25,7 @@ public class Selection : MonoBehaviour {
         {
             selectionIndicatorImages[i] = SelectionList[i].transform.GetChild(0).GetComponent<Image>();
             selectionIndicatorImages[i].sprite = null;
+            selectionIndicatorImages[i].enabled = false;
         }
     }
 
@@ -62,6 +63,7 @@ public class Selection : MonoBehaviour {
         if(imageCount <= numSymbols)
         {
             selectionIndicatorImages[imageCount].sprite = symbols.Sprite;
+            selectionIndicatorImages[imageCount].enabled = true;
             imageCount++;
         }
     }
@@ -74,6 +76,7 @@ public class Selection : MonoBehaviour {
             if (selectionItem.sprite == symbols.Sprite)
             {
                 selectionItem.sprite = null;
+                selectionItem.enabled = false;
                 break;
             }
         }
@@ -128,12 +131,14 @@ public class Selection : MonoBehaviour {
         for (int i = 0; i < selectionIndicatorImages.Length; i++)
         {
             selectionIndicatorImages[i].sprite = null;
+            selectionIndicatorImages[i].enabled = false;
         }
 
         for (int i = 0; i < activeSymbols.Count; i++)
         {
             symbolsList[i] = activeSymbols[i];
             selectionIndicatorImages[i].sprite = symbolsList[i].Sprite;
+            selectionIndicatorImages[i].enabled = true;
         }
 
         imageCount = symbolsList.Count;

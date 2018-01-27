@@ -11,8 +11,7 @@ public class MenuHandler : MonoBehaviour {
     private float ZoomDuration = 1f;
     private float targetSize = 6;
     private float startOrthSize;
-
-
+    
     public GameObject mainPanel;
     public GameObject optionsPanel;
     public AudioMixer mixer;
@@ -39,13 +38,10 @@ public class MenuHandler : MonoBehaviour {
 
     private IEnumerator StartGame()
     {
-        while (zoomTimer < ZoomDuration)
-        {
-            zoomTimer += Time.deltaTime;
-            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
-            yield return null;
-        }
-        this.gameObject.SetActive(false);
+        yield return null;
+        // TODO fade out animation
+
+        SceneManager.LoadScene("MainGame");
     }
 
 
