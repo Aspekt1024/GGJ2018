@@ -38,8 +38,13 @@ public class BtnSymbol : MonoBehaviour {
 
     public void SetStateOn()
     {
-        if (selection.isFull()) return;
+        if (selection.isFull())
+        {
+            SoundBites.Instance.PlayCannotPlace();
+            return;
+        };
 
+        SoundBites.Instance.PlaySelectSymbol();
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.green;
         toggleState.colors = cb;
@@ -49,6 +54,8 @@ public class BtnSymbol : MonoBehaviour {
 
     public void SetStateOff()
     {
+
+        SoundBites.Instance.PlayDeselectSymbol();
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.white;
         toggleState.colors = cb;
