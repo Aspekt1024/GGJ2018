@@ -24,10 +24,12 @@ public class PlanetResponse : MonoBehaviour {
         if (opinion > 0)
         {
             ResponseAnimator.Play(positiveAnimationString, 0, 0f);
+            SoundBites.Instance.PlayLike();
         }
         else if (opinion < 0)
         {
             ResponseAnimator.Play(negativeAnimationString, 0, 0f);
+            SoundBites.Instance.PlayDislike();
         }
         else
         {

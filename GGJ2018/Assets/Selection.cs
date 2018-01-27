@@ -27,6 +27,7 @@ public class Selection : MonoBehaviour {
 
     public void addSymbol(Symbols symbols)
     {
+        
         symbolsList.Add(symbols);
         if(imageCount <= numSymbols)
         {
@@ -37,6 +38,7 @@ public class Selection : MonoBehaviour {
 
     public void removeSymbol(Symbols symbols)
     {
+        
         foreach (var selectionItem in SelectionList)
         {
             if (selectionItem.sprite == symbols.Sprite)
@@ -58,6 +60,7 @@ public class Selection : MonoBehaviour {
 
     public void OnSubmit()
     {
+        SoundBites.Instance.PlayTransmissionSent();
         int numSelectedSymbols = 0;
         for (int i = 0; i < symbolsList.Count; i++)
         {
