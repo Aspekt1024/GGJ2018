@@ -947,6 +947,28 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224748298751639592, guid: 0efc408351bbebd458c070cd9f140ad7,
     type: 2}
   m_PrefabInternal: {fileID: 714500628}
+--- !u!1 &442039278 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1375850091397910, guid: 367a831980b8d5c4eb5368dae886dd81,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140478982}
+--- !u!95 &442039281
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442039278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d940877edb4e585428ea5ed845f74d91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &461723521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1176,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 379282695}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61000013
+  m_Size: 0.6100001
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2040,6 +2062,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4769806055479416, guid: 6e8b39879a4516241abada6356cef42d,
     type: 2}
   m_PrefabInternal: {fileID: 152715506}
+--- !u!95 &999015212 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95231438940664420, guid: 367a831980b8d5c4eb5368dae886dd81,
+    type: 2}
+  m_PrefabInternal: {fileID: 1818571723}
 --- !u!224 &1005979450 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224748298751639592, guid: 0efc408351bbebd458c070cd9f140ad7,
@@ -2146,6 +2173,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114846092942993166, guid: 367a831980b8d5c4eb5368dae886dd81,
+        type: 2}
+      propertyPath: ResponseAnimator
+      value: 
+      objectReference: {fileID: 999015212}
+    - target: {fileID: 95231438940664420, guid: 367a831980b8d5c4eb5368dae886dd81,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 70bf7a744e2c70a4a8deccda0dee63c7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
   m_IsPrefabParent: 0
@@ -2609,6 +2646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntervalTime: 2
   ZoomDuration: 1
+  NumberOfTransmissionsToAdvance: 050000000500000005000000
 --- !u!114 &1314441943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4167,7 +4205,7 @@ MonoBehaviour:
   - {fileID: 1890093936}
   - {fileID: 1279184999}
   - {fileID: 2111613043}
-  numSymbols: 4
+  numSymbols: 2
 --- !u!114 &1736130966
 MonoBehaviour:
   m_ObjectHideFlags: 0

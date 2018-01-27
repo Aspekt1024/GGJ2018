@@ -46,7 +46,7 @@ public class Logger : MonoBehaviour {
 
     public static void AddLog(LogEntry logEntry)
     {
-        Instance.log.Add(logEntry);
+        Instance.GetLogs().Add(logEntry);
         GameUI.UpdateLog();
     }
 }
