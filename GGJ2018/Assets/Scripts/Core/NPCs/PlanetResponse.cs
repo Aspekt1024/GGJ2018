@@ -14,7 +14,6 @@ public class PlanetResponse : MonoBehaviour {
 
     private void Start()
     {
-        ResponseAnimator = GetComponent<Animator>();
         gameObject.SetActive(false);
     }
 
