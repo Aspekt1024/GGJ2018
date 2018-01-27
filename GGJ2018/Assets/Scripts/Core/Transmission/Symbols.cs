@@ -5,12 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Symbols : ScriptableObject {
 
-    public enum SymbolName
-    {
-        Symbol1, Symbol2
-    }
-
+    public string Name;
     public Sprite Sprite;
     public bool IsEnabled;
-    public SymbolName Name;
 }

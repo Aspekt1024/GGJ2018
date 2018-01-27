@@ -18,7 +18,7 @@ public class SymbolHandler : MonoBehaviour {
         }
     }
 
-    public Symbols GetSymbols(Symbols.SymbolName symbolName)
+    public Symbols GetSymbols(string symbolName)
     {
         for (int i = 0; i < Symbols.Length; i++)
         {
