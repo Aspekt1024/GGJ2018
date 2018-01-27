@@ -27,6 +27,11 @@ public class MenuHandler : MonoBehaviour {
         soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
+
+        float currentVol = PlayerPrefs.GetFloat("MusicVolume");
+        musicSlider.value = currentVol;
+        currentVol = PlayerPrefs.GetFloat("SEVolume");
+        soundSlider.value = currentVol;
     }
 
     private void Update()
@@ -63,6 +68,8 @@ public class MenuHandler : MonoBehaviour {
         SoundBites.Instance.PlayMenuButton();
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("SEVolume", soundSlider.value);
     }
 
     public void OnClickQuit()

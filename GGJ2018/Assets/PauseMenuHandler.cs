@@ -19,11 +19,12 @@ public class PauseMenuHandler : MonoBehaviour {
     {
         musicSlider = GameObject.Find("Music Volume").GetComponent<Slider>();
         soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
-        float currentVol;
-        mixer.GetFloat("MusicVolume", out currentVol);
+        float currentVol = PlayerPrefs.GetFloat("MusicVolume");
         musicSlider.value = currentVol;
-        mixer.GetFloat("SoundEffectsVolume", out currentVol);
+        currentVol = PlayerPrefs.GetFloat("SEVolume");
         soundSlider.value = currentVol;
+        //mixer.GetFloat("SoundEffectsVolume", out currentVol);
+        //mixer.SetFloat("Music Volume", currentVol);
     }
 
     // Use this for initialization
@@ -56,6 +57,8 @@ public class PauseMenuHandler : MonoBehaviour {
     
     public void onClickQuit(string lvl)
     {
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("SEVolume", soundSlider.value);
         SceneManager.LoadScene(lvl);
     }
 
