@@ -19,8 +19,10 @@ public class CameraController : MonoBehaviour {
     {
         transmissionCount++;
     }
-    
+
+
     private float targetSize = 0;
+   // private float timer = 0f;
 
     private void Start()
     {
@@ -35,13 +37,19 @@ public class CameraController : MonoBehaviour {
     private void Update()
     {
         if (levelCount >= scaleLevels.Length) return;
+        
 
         if(transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
         {
-            IncrementPhase();
+            targetSize = scaleLevels[levelCount];
+            StartCoroutine(Grow());
+            levelCount++;
+            transmissionCount = 0;
         }
+
     }
-    
+
+
     private IEnumerator Grow()
     {
         float zoomTimer = 0f;
@@ -53,32 +61,6 @@ public class CameraController : MonoBehaviour {
             Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
             
             yield return null;
-        }
-    }
-
-    private void IncrementPhase()
-    {
-        targetSize = scaleLevels[levelCount];
-        StartCoroutine(Grow());
-        levelCount++;
-        transmissionCount = 0;
-
-        switch (levelCount)
-        {
-            case 1:
-                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase1);
-                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase1);
-                break;
-            case 2:
-                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase2);
-                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase2);
-                break;
-            case 3:
-                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase3);
-                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase3);
-                break;
-            default:
-                break;
         }
     }
 }

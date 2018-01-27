@@ -10,8 +10,7 @@ public class MenuHandler : MonoBehaviour {
     private float zoomTimer = 0f;
     private float ZoomDuration = 1f;
     private float targetSize = 6;
-    float startOrthSize = Camera.main.orthographicSize;
-    bool trigger = false;
+    private float startOrthSize;
 
 
     public GameObject mainPanel;
@@ -23,6 +22,7 @@ public class MenuHandler : MonoBehaviour {
 
     private void Awake()
     {
+        startOrthSize = Camera.main.orthographicSize;
         musicSlider = GameObject.Find("Music Volume").GetComponent<Slider>();
         soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
         mainPanel.SetActive(true);
@@ -30,16 +30,17 @@ public class MenuHandler : MonoBehaviour {
     }
 
     private void Update()
+    {}
+
+    private IEnumerator StartGame()
     {
-        if(trigger)
+        while (zoomTimer < ZoomDuration)
         {
-            while (zoomTimer < ZoomDuration)
-            {
-                zoomTimer += Time.deltaTime;
-                Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
-            }
-            this.gameObject.SetActive(false);
+            zoomTimer += Time.deltaTime;
+            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            yield return null;
         }
+        this.gameObject.SetActive(false);
     }
 
 
@@ -47,7 +48,7 @@ public class MenuHandler : MonoBehaviour {
     {
         //Setup as basic lvl loading
         SoundBites.Instance.PlayTransmissionSent();
-        trigger = true;
+        StartCoroutine(StartGame());
     }
 
     public void OnClickOptions()
