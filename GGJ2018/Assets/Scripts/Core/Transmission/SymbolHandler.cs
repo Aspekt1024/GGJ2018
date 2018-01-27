@@ -11,11 +11,6 @@ public class SymbolHandler : MonoBehaviour {
     private void Start()
     {
         Symbols[] symbols = Resources.LoadAll<Symbols>("Symbols");
-        // TODO load NumSymbolsToLoad symbols into the Symbols[] array randomly
-        foreach (var item in symbols)
-        {
-            Debug.Log(item.Name);
-        }
     }
 
     public Symbols GetSymbols(string symbolName)
