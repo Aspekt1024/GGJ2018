@@ -6,10 +6,8 @@ public class Planet : MonoBehaviour {
 
     public string PlanetName = "Planet";
     public int NumSymbols = 2;
-    public bool ShowThoughts = false;
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
-    public PlanetThoughts ThoughtsScript;
     public Transform PlanetPrefab;
 
     private int opinion;
@@ -27,16 +25,6 @@ public class Planet : MonoBehaviour {
         planetPrefab.transform.position = transform.position;
 
         SetSymbolDict();
-        ThoughtsScript.SetThoughts(symbolDict);
-
-        if (ShowThoughts)
-        {
-            ThoughtsScript.EnableThoughts();
-        }
-        else
-        {
-            ThoughtsScript.DisableThoughts();
-        }
     }
 
     public void GiveMessage(List<Symbols> symbols)
