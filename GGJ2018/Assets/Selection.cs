@@ -5,20 +5,50 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
-    public Image[] SelectionList;
+    public GameObject[] SelectionList;
     public int numSymbols;
 
     private List<Symbols> symbolsList = new List<Symbols>();
     private int imageCount = 0;
     private SymbolGenerator generator;
+    private Image[] selectionIndicatorImages;
 
 
     private void Start()
     {
         generator = GetComponent<SymbolGenerator>();
         generator.SelectAvailableButtons();
+        SetPhase(PlanetUnlocker.Phase.Phase0);
+
+        selectionIndicatorImages = new Image[SelectionList.Length];
+        for (int i = 0; i < SelectionList.Length; i++)
+        {
+            selectionIndicatorImages[i] = SelectionList[i].transform.GetChild(0).GetComponent<Image>();
+            selectionIndicatorImages[i].sprite = null;
+        }
     }
 
+    public void SetPhase(PlanetUnlocker.Phase phase)
+    {
+        switch (phase)
+        {
+            case PlanetUnlocker.Phase.Phase0:
+                numSymbols = 1;
+                break;
+            case PlanetUnlocker.Phase.Phase1:
+                numSymbols = 2;
+                break;
+            case PlanetUnlocker.Phase.Phase2:
+                numSymbols = 3;
+                break;
+            case PlanetUnlocker.Phase.Phase3:
+                numSymbols = 4;
+                break;
+            default:
+                break;
+        }
+        UpdateSymbolsUI();
+    }
 
     public bool isFull()
     {
@@ -31,7 +61,7 @@ public class Selection : MonoBehaviour {
         symbolsList.Add(symbols);
         if(imageCount <= numSymbols)
         {
-            SelectionList[imageCount].sprite = symbols.Sprite;
+            selectionIndicatorImages[imageCount].sprite = symbols.Sprite;
             imageCount++;
         }
     }
@@ -39,7 +69,7 @@ public class Selection : MonoBehaviour {
     public void removeSymbol(Symbols symbols)
     {
         
-        foreach (var selectionItem in SelectionList)
+        foreach (var selectionItem in selectionIndicatorImages)
         {
             if (selectionItem.sprite == symbols.Sprite)
             {
@@ -70,12 +100,17 @@ public class Selection : MonoBehaviour {
             }
         }
 
-        if (numSelectedSymbols > 0)
+        if (numSelectedSymbols == numSymbols)
         {
             GameManager.Instance.Player.SendTransmission(symbolsList);
             resetList();
             RepositionSelections();
             generator.SelectAvailableButtons();
+        }
+        else
+        {
+            // TODO set warning message for player (shakescreen?)
+            Debug.LogWarning("need to send full message");
         }
     }
 
@@ -90,18 +125,26 @@ public class Selection : MonoBehaviour {
             }
         }
 
-        for (int i = 0; i < SelectionList.Length; i++)
+        for (int i = 0; i < selectionIndicatorImages.Length; i++)
         {
-            SelectionList[i].sprite = null;
+            selectionIndicatorImages[i].sprite = null;
         }
 
         for (int i = 0; i < activeSymbols.Count; i++)
         {
             symbolsList[i] = activeSymbols[i];
-            SelectionList[i].sprite = symbolsList[i].Sprite;
+            selectionIndicatorImages[i].sprite = symbolsList[i].Sprite;
         }
 
         imageCount = symbolsList.Count;
+    }
+
+    private void UpdateSymbolsUI()
+    {
+        SelectionList[0].SetActive(numSymbols > 0);
+        SelectionList[1].SetActive(numSymbols > 1);
+        SelectionList[2].SetActive(numSymbols > 2);
+        SelectionList[3].SetActive(numSymbols > 3);
     }
 
 }

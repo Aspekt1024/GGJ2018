@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public static GameManager Instance;
     private SymbolHandler symbolHandler;
     private PlanetPrefabHandler planetPrefabs;
+    private PlanetUnlocker planetUnlocker;
 
     public SymbolHandler SymbolHandler
     {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 
+        planetUnlocker = GetComponent<PlanetUnlocker>();
         planetPrefabs = GetComponent<PlanetPrefabHandler>();
         symbolHandler = GetComponent<SymbolHandler>();
         player = FindObjectOfType<Player>();
@@ -68,6 +70,11 @@ public class GameManager : MonoBehaviour {
         {
             // Debug.Log("clicked");
         }
+    }
+
+    public static void UnlockPhase(PlanetUnlocker.Phase phase)
+    {
+        Instance.planetUnlocker.UnlockPhase(phase);
     }
 #endregion
 

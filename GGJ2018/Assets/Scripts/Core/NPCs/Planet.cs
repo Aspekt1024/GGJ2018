@@ -14,16 +14,17 @@ public class Planet : MonoBehaviour {
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
 
-    // TODO array of symbols
+    private void Awake()
+    {
+        symbolDict = new Dictionary<Symbols, int>();
+    }
 
     private void Start()
     {
         symbolHandler = GameManager.Instance.SymbolHandler;
-        symbolDict = new Dictionary<Symbols, int>();
         GameObject planetPrefab = Instantiate(GameManager.Instance.PlanetPrefabs.GetNewPlanet());
         planetPrefab.transform.SetParent(PlanetPrefab);
         planetPrefab.transform.position = transform.position;
-
         SetSymbolDict();
     }
 

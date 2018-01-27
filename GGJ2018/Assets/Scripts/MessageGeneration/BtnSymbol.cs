@@ -7,10 +7,13 @@ public class BtnSymbol : MonoBehaviour {
 
     public Symbols symbol;
     public Selection selection;
+    public Image ImageRenderer;
+
     Toggle toggleState;
 
     private bool state = false;
     private bool hasBeenAdded = false;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -21,7 +24,8 @@ public class BtnSymbol : MonoBehaviour {
     {
         symbol = symbols;
         state = false;
-        toggleState.image.sprite = symbol.Sprite;
+        ImageRenderer.sprite = symbol.Sprite;
+        originalColor = ImageRenderer.color;
     }
     
     public void ButtonClicked()
@@ -47,7 +51,7 @@ public class BtnSymbol : MonoBehaviour {
         SoundBites.Instance.PlaySelectSymbol();
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.green;
-        toggleState.colors = cb;
+        ImageRenderer.color = cb.normalColor;
         selection.addSymbol(symbol);
         hasBeenAdded = true;
     }
@@ -57,8 +61,8 @@ public class BtnSymbol : MonoBehaviour {
 
         SoundBites.Instance.PlayDeselectSymbol();
         ColorBlock cb = toggleState.colors;
-        cb.normalColor = cb.highlightedColor = Color.white;
-        toggleState.colors = cb;
+        cb.normalColor = cb.highlightedColor = originalColor;
+        ImageRenderer.color = cb.normalColor;
         selection.removeSymbol(symbol);
         hasBeenAdded = false;
     }
