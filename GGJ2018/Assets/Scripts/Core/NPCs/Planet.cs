@@ -57,12 +57,11 @@ public class Planet : MonoBehaviour {
         ResponseScript.SetReponseImage(this, messageOpinion);
         opinion += messageOpinion;
         OpinionScript.SetOpinion(opinion);
+        Logger.AddLog(this, symbols.ToArray(), messageOpinion);
     }
 
     private void SetSymbolDict()
     {
-        // Used when updating periodically
-        
         for (int i = 0; i < NumSymbols; i++)
         {
             // This works. 1 = positive, else negative. Update if this really bugs us later
