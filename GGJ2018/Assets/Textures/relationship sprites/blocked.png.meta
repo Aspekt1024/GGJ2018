@@ -1,48 +1,19 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: afe6cdf506d8704448340985d90b6e42
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-guid: 924a73e505f52424ca4a3d1ce1a23b32
-timeCreated: 1517011133
-=======
-guid: 8a07d004fa983b34dab8d3c7b5151c72
-timeCreated: 1517011309
->>>>>>> master
-=======
-guid: afe6cdf506d8704448340985d90b6e42
-timeCreated: 1517011616
-=======
-guid: 8a07d004fa983b34dab8d3c7b5151c72
-timeCreated: 1517011309
->>>>>>> 380485c959a111e17b9e95afbfcbe6729ffacb31
->>>>>>> master
+guid: db23c69db0222a14dbe6d1241b77d0ca
+timeCreated: 1517013961
 licenseType: Free
->>>>>>> 00481b7170c4db6d863c8906f06b15024defb989
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 380485c959a111e17b9e95afbfcbe6729ffacb31
->>>>>>> master
->>>>>>> 00481b7170c4db6d863c8906f06b15024defb989
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
-<<<<<<< HEAD
-=======
     mipMapsPreserveCoverage: 0
     alphaTestReferenceValue: 0.5
->>>>>>> master
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -58,16 +29,6 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-<<<<<<< HEAD
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 0
-=======
     serializedVersion: 2
     filterMode: -1
     aniso: -1
@@ -79,32 +40,16 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 380485c959a111e17b9e95afbfcbe6729ffacb31
->>>>>>> master
->>>>>>> 00481b7170c4db6d863c8906f06b15024defb989
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 380485c959a111e17b9e95afbfcbe6729ffacb31
->>>>>>> master
->>>>>>> 00481b7170c4db6d863c8906f06b15024defb989
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -150,22 +95,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 380485c959a111e17b9e95afbfcbe6729ffacb31
->>>>>>> master
->>>>>>> 00481b7170c4db6d863c8906f06b15024defb989
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
-<<<<<<< HEAD
-=======
     physicsShape: []
->>>>>>> master
   spritePackingTag: 
   userData: 
   assetBundleName: 
