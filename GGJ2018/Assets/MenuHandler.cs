@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour {
 
+    private float zoomTimer = 0f;
+    private float ZoomDuration = 1f;
+    private float targetSize = 6;
+    float startOrthSize = Camera.main.orthographicSize;
+    bool trigger = false;
+
+
     public GameObject mainPanel;
     public GameObject optionsPanel;
     public AudioMixer mixer;
@@ -22,26 +29,44 @@ public class MenuHandler : MonoBehaviour {
         optionsPanel.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(trigger)
+        {
+            while (zoomTimer < ZoomDuration)
+            {
+                zoomTimer += Time.deltaTime;
+                Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            }
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
     public void OnClickStart(string lvl)
     {
         //Setup as basic lvl loading
-        SceneManager.LoadScene(lvl);
+        SoundBites.Instance.PlayTransmissionSent();
+        trigger = true;
     }
 
     public void OnClickOptions()
     {
+        SoundBites.Instance.PlayMenuButton();
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
     public void OnClickBack()
     {
+        SoundBites.Instance.PlayMenuButton();
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
     }
 
     public void OnClickQuit()
     {
+        SoundBites.Instance.PlayMenuButton();
         Application.Quit();
     }
 
