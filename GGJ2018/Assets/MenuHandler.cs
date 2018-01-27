@@ -34,13 +34,10 @@ public class MenuHandler : MonoBehaviour {
 
     private IEnumerator StartGame()
     {
-        while (zoomTimer < ZoomDuration)
-        {
-            zoomTimer += Time.deltaTime;
-            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
-            yield return null;
-        }
-        this.gameObject.SetActive(false);
+        yield return null;
+        // TODO fade out animation
+
+        SceneManager.LoadScene("MainGame");
     }
 
 
