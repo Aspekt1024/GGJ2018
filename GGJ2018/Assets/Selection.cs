@@ -10,10 +10,13 @@ public class Selection : MonoBehaviour {
 
     private List<Symbols> symbolsList = new List<Symbols>();
     private int imageCount = 0;
+    private SymbolGenerator generator;
 
 
     private void Start()
     {
+        generator = GetComponent<SymbolGenerator>();
+        generator.SelectAvailableButtons();
     }
 
 
@@ -34,24 +37,68 @@ public class Selection : MonoBehaviour {
 
     public void removeSymbol(Symbols symbols)
     {
+        foreach (var selectionItem in SelectionList)
+        {
+            if (selectionItem.sprite == symbols.Sprite)
+            {
+                selectionItem.sprite = null;
+                break;
+            }
+        }
+
         symbolsList.Remove(symbols);
-        SelectionList[imageCount-1].sprite = null;
-        imageCount--;
+        RepositionSelections();
     }
 
     public void resetList()
     {
         symbolsList = new List<Symbols>();
-    }
-
-    public void printSize()
-    {
-        print(symbolsList.Count);
+        generator.ClearSelections();
     }
 
     public void OnSubmit()
     {
-        GameManager.Instance.Player.SendTransmission(symbolsList);
+        int numSelectedSymbols = 0;
+        for (int i = 0; i < symbolsList.Count; i++)
+        {
+            if (symbolsList[i].Sprite != null)
+            {
+                numSelectedSymbols++;
+            }
+        }
+
+        if (numSelectedSymbols > 0)
+        {
+            GameManager.Instance.Player.SendTransmission(symbolsList);
+            resetList();
+            RepositionSelections();
+            generator.SelectAvailableButtons();
+        }
+    }
+
+    private void RepositionSelections()
+    {
+        List<Symbols> activeSymbols = new List<Symbols>();
+        for (int i = 0; i < symbolsList.Count; i++)
+        {
+            if (symbolsList[i] != null)
+            {
+                activeSymbols.Add(symbolsList[i]);
+            }
+        }
+
+        for (int i = 0; i < SelectionList.Length; i++)
+        {
+            SelectionList[i].sprite = null;
+        }
+
+        for (int i = 0; i < activeSymbols.Count; i++)
+        {
+            symbolsList[i] = activeSymbols[i];
+            SelectionList[i].sprite = symbolsList[i].Sprite;
+        }
+
+        imageCount = symbolsList.Count;
     }
 
 }

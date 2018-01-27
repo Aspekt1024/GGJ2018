@@ -6,8 +6,10 @@ public class Planet : MonoBehaviour {
 
     public string PlanetName = "Planet";
     public int NumSymbols = 2;
+    public bool ShowThoughts = false;
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
+    public PlanetThoughts ThoughtsScript;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
@@ -20,6 +22,7 @@ public class Planet : MonoBehaviour {
         symbolHandler = GameManager.Instance.SymbolHandler;
         symbolDict = new Dictionary<Symbols, int>();
         SetSymbolDict();
+        ThoughtsScript.SetThoughts(symbolDict);
     }
 
     public void GiveMessage(List<Symbols> symbols)

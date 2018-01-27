@@ -34,11 +34,9 @@ public class BtnSymbol : MonoBehaviour {
         {
             SetStateOff();
         }
-
-        selection.printSize();
     }
 
-    private void SetStateOn()
+    public void SetStateOn()
     {
         if (selection.isFull()) return;
 
@@ -49,7 +47,7 @@ public class BtnSymbol : MonoBehaviour {
         hasBeenAdded = true;
     }
 
-    private void SetStateOff()
+    public void SetStateOff()
     {
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.white;
