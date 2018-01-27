@@ -10,11 +10,13 @@ public class Planet : MonoBehaviour {
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
+    private PlanetResponse response;
 
     // TODO array of symbols
 
     private void Start()
     {
+        response = GetComponentInChildren<PlanetResponse>();
         symbolHandler = GameManager.Instance.SymbolHandler;
         symbolDict = new Dictionary<Symbols, int>();
         SetSymbolDict();
@@ -22,15 +24,17 @@ public class Planet : MonoBehaviour {
 
     public void GiveMessage(HashSet<Symbols> symbols)
     {
+        int messageOpinion = 0;
         foreach (Symbols symbol in symbols)
         {
             if (symbolDict.ContainsKey(symbol))
             {
-                opinion += symbolDict[symbol];
+                messageOpinion += symbolDict[symbol];
             }
         }
+        response.SetReponseImage(this, messageOpinion);
+        opinion += messageOpinion;
         Debug.Log(PlanetName + " has new opinion of you: " + opinion);
-        // TODO replace with overlay
     }
 
     private void SetSymbolDict()
