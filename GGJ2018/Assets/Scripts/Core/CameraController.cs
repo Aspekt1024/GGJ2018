@@ -4,39 +4,43 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    public float IntervalTime = 10f;
+    public float ZoomDuration = 1f;
 
-    int[] scaleLevels = {6, 10, 14, 18 };
-    private float sizeIncrease = 0;
-    float zoomSpeed = 0.0015f;
-    float tParam = 0;
+    private int levelCount;
+    private int[] scaleLevels = {6, 10, 14, 18 };
+    private float targetSize = 0;
+    private float tParam = 0;
+    float timer = 0f;
 
     private void Start()
     {
-        StartCoroutine("CameraGrow");
     }
 
     private void Update()
     {
-        if (Camera.main.orthographicSize < sizeIncrease)
+        timer += Time.deltaTime;
+        if (timer >= IntervalTime)
         {
-            tParam += zoomSpeed * Time.deltaTime;
-            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, sizeIncrease, tParam);
+            targetSize = scaleLevels[levelCount];
+            StartCoroutine(Grow());
+
+            levelCount++;
+            timer = 0f;
         }
-        else
-            tParam = 0;
     }
 
 
-    IEnumerator CameraGrow()
+    private IEnumerator Grow()
     {
-        
-        for (int LevelCount = 0; LevelCount < scaleLevels.Length; LevelCount++)
+        float zoomTimer = 0f;
+        float startOrthSize = Camera.main.orthographicSize;
+        while (zoomTimer < ZoomDuration)
         {
-            sizeIncrease = scaleLevels[LevelCount];
-            yield return new WaitForSeconds(60);
+            zoomTimer += Time.deltaTime;
+            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            yield return null;
         }
-        StopCoroutine("CameraGrow");
-        
     }
 }
 
