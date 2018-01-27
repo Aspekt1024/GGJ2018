@@ -8,6 +8,16 @@ public class PlanetThoughts : MonoBehaviour {
     public SpriteRenderer Thought2;
     public SpriteRenderer Thought3;
     public SpriteRenderer Thought4;
+    
+    public void EnableThoughts()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void DisableThoughts()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void SetThoughts(Dictionary<Symbols, int> thoughtsDict)
     {
@@ -44,23 +54,23 @@ public class PlanetThoughts : MonoBehaviour {
     {
         if (opinion == 1)
         {
-            return new Color(0.2f, 0.7f, 0.2f);
+            return Helpers.GetEmotionalTint(Helpers.Emotions.Like);
         }
         else if (opinion == -1)
         {
-            return new Color(0.7f, 0.2f, 0.2f);
+            return Helpers.GetEmotionalTint(Helpers.Emotions.Dislike);
         }
         else if (opinion == 2)
         {
-            return new Color(0f, 1f, 0f);
+            return Helpers.GetEmotionalTint(Helpers.Emotions.StrongLike);
         }
         else if (opinion == -2)
         {
-            return new Color(1f, 0f, 0f);
+            return Helpers.GetEmotionalTint(Helpers.Emotions.StrongDislike);
         }
         else
         {
-            return Color.white;
+            return Helpers.GetEmotionalTint(Helpers.Emotions.Neutral);
         }
     }
 

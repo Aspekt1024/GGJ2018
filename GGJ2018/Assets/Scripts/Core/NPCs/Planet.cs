@@ -23,10 +23,24 @@ public class Planet : MonoBehaviour {
         symbolDict = new Dictionary<Symbols, int>();
         SetSymbolDict();
         ThoughtsScript.SetThoughts(symbolDict);
+
+        if (ShowThoughts)
+        {
+            ThoughtsScript.EnableThoughts();
+        }
+        else
+        {
+            ThoughtsScript.DisableThoughts();
+        }
     }
 
     public void GiveMessage(List<Symbols> symbols)
     {
+        if (opinion <= OpinionScript.BlockedValue)
+        {
+            return;
+        }
+
         int messageOpinion = 0;
         foreach (Symbols symbol in symbols)
         {
