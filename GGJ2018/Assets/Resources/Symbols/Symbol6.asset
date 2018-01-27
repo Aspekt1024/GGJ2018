@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a5d574afd23a2458653ec397c2f86d, type: 3}
   m_Name: Symbol6
   m_EditorClassIdentifier: 
-  Name: S1
-  Sprite: {fileID: 21300022, guid: 9eb8e9276878e7a40abe372075afb122, type: 3}
+  Name: S6
+  Sprite: {fileID: 21300000, guid: 045f3c18123bb774f993f2043ed6ea7d, type: 3}
   IsEnabled: 0
