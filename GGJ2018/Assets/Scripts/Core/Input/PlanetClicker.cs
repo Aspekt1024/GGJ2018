@@ -17,7 +17,6 @@ public class PlanetClicker : MonoBehaviour
                 if (hit.collider.gameObject.layer == Helpers.GetMask(Helpers.Layer.Planet))
                 {
                     GameUI.Instance.LogUI.SetLogFilter(hit.collider.GetComponent<Planet>());
-                    hit.collider.GetComponent<Planet>().Explode();
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {

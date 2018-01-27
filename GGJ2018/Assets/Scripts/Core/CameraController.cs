@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 
     private int levelCount = 0;
     private int[] scaleLevels = {10, 14, 18};
-    public int[] NumberOfTransmissionsToAdvance = {5, 5, 5};
+    public int[] NumberOfTransmissionsToAdvance = {3, 5, 5};
     private int transmissionCount = 0;
 
 
@@ -27,11 +27,8 @@ public class CameraController : MonoBehaviour {
         Camera.main.orthographicSize = 6;
         selection = FindObjectOfType<Selection>();
         selection.numSymbols = 1;
-            
     }
     
-
-
     private void Update()
     {
         if (levelCount >= scaleLevels.Length) return;
