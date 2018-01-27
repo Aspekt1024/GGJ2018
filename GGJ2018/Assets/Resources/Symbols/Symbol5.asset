@@ -11,6 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a5d574afd23a2458653ec397c2f86d, type: 3}
   m_Name: Symbol5
   m_EditorClassIdentifier: 
-  Name: S3
-  Sprite: {fileID: 21300028, guid: 9eb8e9276878e7a40abe372075afb122, type: 3}
+<<<<<<< HEAD
+  Sprite: {fileID: 21300034, guid: 9eb8e9276878e7a40abe372075afb122, type: 3}
   IsEnabled: 0
+  Name: 4
+=======
+  Name: S5
+  Sprite: {fileID: 21300000, guid: 9f1132791335b10479f5fd7f0e204efd, type: 3}
+  IsEnabled: 0
+>>>>>>> 4f9b48b8764456cbec4841d947bc7995474572d6
