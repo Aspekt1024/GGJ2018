@@ -47,16 +47,35 @@ public class LogUI : MonoBehaviour
     {
         ClearAllLogs();
         List<Logger.LogEntry> logs = Logger.Instance.GetLogs();
-        int numLogs = logs.Count;
-        
+
+        List<Logger.LogEntry> logsToPrint = new List<Logger.LogEntry>();
+
+
+        if (planetFilter == null)
+        {
+            logsToPrint = logs;
+        }
+        else
+        {
+            foreach (var log in logs)
+            {
+                if (log.Planet.gameObject == planetFilter.gameObject)
+                {
+                    logsToPrint.Add(log);
+                }
+            }
+        }
+
+        int numLogs = logsToPrint.Count;
+
         LogContent.sizeDelta = new Vector2(LogContent.sizeDelta.x, numLogs * (yPadding + MessagePrefab.rect.size.y));
 
-        for (int i = 0; i < logs.Count; i++)
+        for (int i = 0; i < logsToPrint.Count; i++)
         {
             bool containsLog = false;
             foreach (var message in messages)
             {
-                if (message.GetEntry() == logs[i])
+                if (message.GetEntry() == logsToPrint[i])
                 {
                     containsLog = true;
                     break;
@@ -66,7 +85,7 @@ public class LogUI : MonoBehaviour
             {
                 RectTransform newMessageRt = Instantiate(MessagePrefab);
                 LogMessage newMessage = newMessageRt.GetComponent<LogMessage>();
-                newMessage.SetMessage(logs[i]);
+                newMessage.SetMessage(logsToPrint[i]);
                 messages.Add(newMessage);
 
                 newMessageRt.SetParent(LogContent);
