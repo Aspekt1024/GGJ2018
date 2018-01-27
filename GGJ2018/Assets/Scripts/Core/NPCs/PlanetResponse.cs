@@ -8,13 +8,12 @@ public class PlanetResponse : MonoBehaviour {
     public float ShowResponseDuration = 2f;
     private const string positiveAnimationString = "Positive";
     private const string negativeAnimationString = "Negative";
-    private const string neutralAnimationString = "neutralreaction";
+    private const string neutralAnimationString = "neautralreaction";
     public Animator ResponseAnimator;
 
 
     private void Start()
     {
-        ResponseAnimator = GetComponent<Animator>();
         gameObject.SetActive(false);
     }
 

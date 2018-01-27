@@ -18,7 +18,6 @@ public class CameraController : MonoBehaviour {
     public void addTransmission()
     {
         transmissionCount++;
-        print(transmissionCount);
     }
 
 
