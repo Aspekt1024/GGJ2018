@@ -325,6 +325,52 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.900001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.3500042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.22804116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.7557625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.5439389
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.2845185
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -109.965004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 43.821003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002079594168402, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 65.05801
+      objectReference: {fileID: 0}
+    - target: {fileID: 198975790448028204, guid: 6e8b39879a4516241abada6356cef42d,
+        type: 2}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198975790448028204, guid: 6e8b39879a4516241abada6356cef42d,
+        type: 2}
+      propertyPath: randomSeed
+      value: 165936
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e8b39879a4516241abada6356cef42d, type: 2}
   m_IsPrefabParent: 0
@@ -882,7 +928,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 16
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
