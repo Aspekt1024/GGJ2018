@@ -1,19 +1,31 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: af1bfee0f8b545345ae14aabe43e575a
 timeCreated: 1517024956
+=======
+guid: b2b1e8c55a8c776448ceff69a06f50ca
+timeCreated: 1517026228
+>>>>>>> Stashed changes
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
+<<<<<<< Updated upstream
     enableMipMap: 0
+=======
+    enableMipMap: 1
+>>>>>>> Stashed changes
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+<<<<<<< Updated upstream
     mipMapsPreserveCoverage: 0
     alphaTestReferenceValue: 0.5
+=======
+>>>>>>> Stashed changes
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -29,6 +41,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+<<<<<<< Updated upstream
     serializedVersion: 2
     filterMode: -1
     aniso: -1
@@ -40,6 +53,16 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
+=======
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -47,9 +70,15 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
+<<<<<<< Updated upstream
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
+=======
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+>>>>>>> Stashed changes
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -63,6 +92,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< Updated upstream
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -95,11 +125,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+=======
+>>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
+<<<<<<< Updated upstream
     physicsShape: []
+=======
+>>>>>>> Stashed changes
   spritePackingTag: 
   userData: 
   assetBundleName: 
