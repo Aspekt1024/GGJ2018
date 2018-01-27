@@ -7,7 +7,7 @@ public static class Helpers
 
     public enum Layer
     {
-        Planet, Player
+        Planet, Player, Background
     }
 
     public enum Emotions

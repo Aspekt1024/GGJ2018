@@ -62,7 +62,7 @@ public class Transmission : MonoBehaviour {
                 Planet planet = collider.GetComponent<Planet>();
                 if (planet != null)
                 {
-                    if (!planetsHit.Contains(planet))
+                    if (Vector2.Distance(planet.transform.position, GameManager.Instance.Player.transform.position) > size - 1f && !planetsHit.Contains(planet))
                     {
                         planet.GiveMessage(symbols);
                         planetsHit.Add(planet);

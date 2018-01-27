@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Planet : MonoBehaviour {
 
@@ -9,21 +10,26 @@ public class Planet : MonoBehaviour {
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
     public Transform PlanetPrefab;
+    public Text PlanetNameText;
+    public GameObject Visuals;
+    public GameObject Explosion;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
 
-    // TODO array of symbols
+    private void Awake()
+    {
+        symbolDict = new Dictionary<Symbols, int>();
+        PlanetNameText.text = PlanetName;
+    }
 
     private void Start()
     {
         symbolHandler = GameManager.Instance.SymbolHandler;
-        symbolDict = new Dictionary<Symbols, int>();
         GameObject planetPrefab = Instantiate(GameManager.Instance.PlanetPrefabs.GetNewPlanet());
         planetPrefab.transform.SetParent(PlanetPrefab);
         planetPrefab.transform.position = transform.position;
-
         SetSymbolDict();
     }
 
@@ -79,4 +85,9 @@ public class Planet : MonoBehaviour {
         return symbolHandler.GetAllSymbols()[symbolIndex];
     }
 
+    public void Explode()
+    {
+        Visuals.SetActive(false);
+        Explosion.SetActive(true);
+    }
 }
