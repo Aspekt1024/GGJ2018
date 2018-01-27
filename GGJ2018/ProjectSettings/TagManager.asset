@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Msg
+=======
+  - Transmission
+>>>>>>> 4f9b48b8764456cbec4841d947bc7995474572d6
   layers:
   - Default
   - TransparentFX
@@ -50,6 +54,9 @@ TagManager:
     locked: 0
   - name: Planet
     uniqueID: 940256465
+    locked: 0
+  - name: InGameOverlay
+    uniqueID: 1727457983
     locked: 0
   - name: UI
     uniqueID: 4067429357

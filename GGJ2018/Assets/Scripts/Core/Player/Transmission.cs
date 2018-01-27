@@ -3,37 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Transmission : MonoBehaviour {
-
-    public Transform Sprites;
-
+    
     private HashSet<Planet> planetsHit;
     private float growSpeed;
+    private float duration;
     private float size;
-    private Transform playerTf;
+    private float elapsedTime;
+    private TransmissionRenderer txRenderer;
 
     //private HashSet<Symbol> symbols; // TODO add when we have symbols
 
     private void Awake()
     {
-        planetsHit = new HashSet<Planet>();
-        playerTf = GameManager.Instance.Player.transform;
+        InitialiseComponents();
     }
 
-    public void Activate(float speed)
+    private void InitialiseComponents()
     {
+        if (txRenderer == null)
+        {
+            txRenderer = GetComponent<TransmissionRenderer>();
+        }
+        planetsHit = new HashSet<Planet>();
+    }
+
+    public void Activate(float speed, float duration)
+    {
+        InitialiseComponents();
+        txRenderer.Clear();
+        this.duration = duration;
         growSpeed = speed;
         size = 0f;
-        transform.position = playerTf.position;
-        Debug.Log("sending transmission at " + speed + "lightyears per second");
+        elapsedTime = 0f;
+        gameObject.SetActive(true);
+
+        transform.position = GameManager.Instance.Player.transform.position;
+        Debug.Log("sending transmission at " + speed + " lightyears per second");
     }
 
     private void Update()
     {
-        size += Time.deltaTime * growSpeed;
+        elapsedTime += Time.deltaTime;
 
-        transform.localScale = Vector3.one * size / 2;
+        if (elapsedTime >= duration)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
 
-        Collider2D[] hit = Physics2D.OverlapCircleAll(playerTf.position, size, Helpers.GetMaskInt(Helpers.Layer.Planet));
+        size = elapsedTime * growSpeed;
+        
+        Collider2D[] hit = Physics2D.OverlapCircleAll(GameManager.Instance.Player.transform.position, size, Helpers.GetMaskInt(Helpers.Layer.Planet));
+        txRenderer.RadialScale = size;
 
         if (hit.Length > 0)
         {

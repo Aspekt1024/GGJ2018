@@ -6,6 +6,7 @@ public class Planet : MonoBehaviour {
 
     public string PlanetName = "Planet";
     public int NumSymbols = 2;
+    public PlanetResponse ResponseScript;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
@@ -22,15 +23,17 @@ public class Planet : MonoBehaviour {
 
     public void GiveMessage(HashSet<Symbols> symbols)
     {
+        int messageOpinion = 0;
         foreach (Symbols symbol in symbols)
         {
             if (symbolDict.ContainsKey(symbol))
             {
-                opinion += symbolDict[symbol];
+                messageOpinion += symbolDict[symbol];
             }
         }
+        ResponseScript.SetReponseImage(this, messageOpinion);
+        opinion += messageOpinion;
         Debug.Log(PlanetName + " has new opinion of you: " + opinion);
-        // TODO replace with overlay
     }
 
     private void SetSymbolDict()
