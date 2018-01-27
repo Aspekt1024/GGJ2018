@@ -5,7 +5,7 @@ using UnityEngine;
 public class TransmissionRenderer : MonoBehaviour {
 
     public int DegreesPerSegment;
-    public float RadialScale;
+    [HideInInspector] public float RadialScale;
 
     private float currentAngle;
     private LineRenderer lineRenderer;
@@ -20,6 +20,18 @@ public class TransmissionRenderer : MonoBehaviour {
 	void Update () {
         CreatePoints();
 	}
+
+    public void Clear()
+    {
+        if (lineRenderer == null)
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            lineRenderer.SetPosition(i, Vector3.zero);
+        }
+    }
 
     private void CreatePoints()
     {

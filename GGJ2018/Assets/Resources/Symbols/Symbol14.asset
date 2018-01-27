@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a5d574afd23a2458653ec397c2f86d, type: 3}
   m_Name: Symbol14
   m_EditorClassIdentifier: 
-  Name: S3
-  Sprite: {fileID: 21300028, guid: 9eb8e9276878e7a40abe372075afb122, type: 3}
+  Name: S14
+  Sprite: {fileID: 21300000, guid: 870cfc4d897133d41ad9ee5dcd491214, type: 3}
   IsEnabled: 0

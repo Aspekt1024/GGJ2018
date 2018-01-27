@@ -6,17 +6,16 @@ public class Planet : MonoBehaviour {
 
     public string PlanetName = "Planet";
     public int NumSymbols = 2;
+    public PlanetResponse ResponseScript;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
-    private PlanetResponse response;
 
     // TODO array of symbols
 
     private void Start()
     {
-        response = GetComponentInChildren<PlanetResponse>();
         symbolHandler = GameManager.Instance.SymbolHandler;
         symbolDict = new Dictionary<Symbols, int>();
         SetSymbolDict();
@@ -32,7 +31,7 @@ public class Planet : MonoBehaviour {
                 messageOpinion += symbolDict[symbol];
             }
         }
-        response.SetReponseImage(this, messageOpinion);
+        ResponseScript.SetReponseImage(this, messageOpinion);
         opinion += messageOpinion;
         Debug.Log(PlanetName + " has new opinion of you: " + opinion);
     }
