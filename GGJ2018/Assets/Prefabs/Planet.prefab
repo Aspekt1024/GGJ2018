@@ -456,8 +456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlanetName: Planet
-  NumSymbols: 2
-  ShowThoughts: 0
+  NumSymbols: 4
+  ShowThoughts: 1
   ResponseScript: {fileID: 114846092942993166}
   OpinionScript: {fileID: 114243657643441976}
   ThoughtsScript: {fileID: 114857048366412130}
