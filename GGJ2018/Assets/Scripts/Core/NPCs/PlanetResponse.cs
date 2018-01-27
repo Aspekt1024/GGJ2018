@@ -6,12 +6,10 @@ using System;
 public class PlanetResponse : MonoBehaviour {
 
     public float ShowResponseDuration = 2f;
-    public Sprite VeryPositiveResponseImage;
-    public Sprite PositiveResponseImage;
-    public Sprite NeutralResponseImage;
-    public Sprite NegativeResponseImage;
-    public Sprite VeryNegativeResponseImage;
-    public SpriteRenderer ResponseImage;
+    private const string positiveAnimationString = "Positive";
+    private const string negativeAnimationString = "Negative";
+    private const string neutralAnimationString = "neutralreaction";
+    public Animator ResponseAnimator;
 
 
     private void Start()
@@ -21,20 +19,20 @@ public class PlanetResponse : MonoBehaviour {
 
     public void SetReponseImage(Planet planet, int opinion)
     {
+        gameObject.SetActive(true);
         if (opinion > 0)
         {
-            ResponseImage.sprite = PositiveResponseImage;
+            ResponseAnimator.Play(positiveAnimationString, 0, 0f);
         }
         else if (opinion < 0)
         {
-            ResponseImage.sprite = NegativeResponseImage;
+            ResponseAnimator.Play(negativeAnimationString, 0, 0f);
         }
         else
         {
-            ResponseImage.sprite = NeutralResponseImage;
+            ResponseAnimator.Play(neutralAnimationString, 0, 0f);
         }
 
-        gameObject.SetActive(true);
         Invoke(((Action)HideResponse).Method.Name, ShowResponseDuration);
     }
 
