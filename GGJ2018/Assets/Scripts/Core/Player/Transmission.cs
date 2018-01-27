@@ -9,27 +9,34 @@ public class Transmission : MonoBehaviour {
     private float duration;
     private float size;
     private float elapsedTime;
-    private Transform playerTf;
     private TransmissionRenderer txRenderer;
 
     //private HashSet<Symbol> symbols; // TODO add when we have symbols
 
-    private void Start()
+    private void Awake()
     {
-        txRenderer = GetComponent<TransmissionRenderer>();
+        InitialiseComponents();
+    }
+
+    private void InitialiseComponents()
+    {
+        if (txRenderer == null)
+        {
+            txRenderer = GetComponent<TransmissionRenderer>();
+        }
         planetsHit = new HashSet<Planet>();
-        gameObject.SetActive(false);
     }
 
     public void Activate(float speed, float duration)
     {
-        gameObject.SetActive(true);
-        planetsHit = new HashSet<Planet>();
-        growSpeed = speed;
+        InitialiseComponents();
+        txRenderer.Clear();
         this.duration = duration;
+        growSpeed = speed;
         size = 0f;
         elapsedTime = 0f;
-        
+        gameObject.SetActive(true);
+
         transform.position = GameManager.Instance.Player.transform.position;
         Debug.Log("sending transmission at " + speed + " lightyears per second");
     }

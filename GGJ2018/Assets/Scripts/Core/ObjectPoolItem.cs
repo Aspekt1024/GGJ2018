@@ -53,6 +53,7 @@ public class ObjectPoolItem {
         GameObject obj = Object.Instantiate(ObjectPrefab, poolItemParent);
         PooledObjects.Add(obj);
         SetPoolSpecificAttributes(obj);
+        obj.SetActive(false);
         return obj;
     }
 
