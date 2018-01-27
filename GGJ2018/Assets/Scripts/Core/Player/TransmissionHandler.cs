@@ -12,9 +12,9 @@ public class TransmissionHandler : MonoBehaviour {
     {
     }
 
-    public void SendTransmission()
+    public void SendTransmission(List<Symbols> symbols)
     {
         Transmission newTransmission = ObjectPooler.Instance.GetPooledObject(ObjectPooler.Pools.Transmission.ToString()).GetComponent<Transmission>();
-        newTransmission.Activate(TransmissionSpeed, TransmissionDuration);
+        newTransmission.Activate(TransmissionSpeed, TransmissionDuration, symbols);
     }
 }

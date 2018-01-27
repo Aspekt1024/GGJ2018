@@ -10,8 +10,7 @@ public class Transmission : MonoBehaviour {
     private float size;
     private float elapsedTime;
     private TransmissionRenderer txRenderer;
-
-    //private HashSet<Symbol> symbols; // TODO add when we have symbols
+    private List<Symbols> symbols;
 
     private void Awake()
     {
@@ -27,18 +26,18 @@ public class Transmission : MonoBehaviour {
         planetsHit = new HashSet<Planet>();
     }
 
-    public void Activate(float speed, float duration)
+    public void Activate(float speed, float duration, List<Symbols> symbols)
     {
         InitialiseComponents();
         txRenderer.Clear();
         this.duration = duration;
+        this.symbols = symbols;
         growSpeed = speed;
         size = 0f;
         elapsedTime = 0f;
         gameObject.SetActive(true);
 
         transform.position = GameManager.Instance.Player.transform.position;
-        Debug.Log("sending transmission at " + speed + " lightyears per second");
     }
 
     private void Update()
@@ -65,10 +64,6 @@ public class Transmission : MonoBehaviour {
                 {
                     if (!planetsHit.Contains(planet))
                     {
-                        Debug.Log("hit new planet: " + planet.PlanetName);
-                        HashSet<Symbols> symbols = new HashSet<Symbols>();
-                        symbols.Add(GameManager.Instance.SymbolHandler.Symbols[0]);
-                        symbols.Add(GameManager.Instance.SymbolHandler.Symbols[1]);
                         planet.GiveMessage(symbols);
                         planetsHit.Add(planet);
                     }

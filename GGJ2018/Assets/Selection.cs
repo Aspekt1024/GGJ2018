@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
-    private List<Symbols> symbolsList = new List<Symbols>();
-    private Image[] imageList;
-    private int imageCount = 0;
-
+    public Image[] SelectionList;
     public int numSymbols;
+
+    private List<Symbols> symbolsList = new List<Symbols>();
+    private int imageCount = 0;
+    private SymbolGenerator generator;
+
 
     private void Start()
     {
-        imageList = GetComponentsInChildren<Image>();
+        generator = GetComponent<SymbolGenerator>();
+        generator.SelectAvailableButtons();
     }
 
 
@@ -27,31 +30,75 @@ public class Selection : MonoBehaviour {
         symbolsList.Add(symbols);
         if(imageCount <= numSymbols)
         {
-            imageList[imageCount].sprite = symbols.Sprite;
+            SelectionList[imageCount].sprite = symbols.Sprite;
             imageCount++;
         }
     }
 
     public void removeSymbol(Symbols symbols)
     {
+        foreach (var selectionItem in SelectionList)
+        {
+            if (selectionItem.sprite == symbols.Sprite)
+            {
+                selectionItem.sprite = null;
+                break;
+            }
+        }
+
         symbolsList.Remove(symbols);
-        imageList[imageCount-1].sprite = null;
-        imageCount--;
+        RepositionSelections();
     }
 
     public void resetList()
     {
         symbolsList = new List<Symbols>();
+        generator.ClearSelections();
     }
 
-    public void printSize()
+    public void OnSubmit()
     {
-        print(symbolsList.Count);
+        int numSelectedSymbols = 0;
+        for (int i = 0; i < symbolsList.Count; i++)
+        {
+            if (symbolsList[i].Sprite != null)
+            {
+                numSelectedSymbols++;
+            }
+        }
+
+        if (numSelectedSymbols > 0)
+        {
+            GameManager.Instance.Player.SendTransmission(symbolsList);
+            resetList();
+            RepositionSelections();
+            generator.SelectAvailableButtons();
+        }
     }
 
-    public List<Symbols> OnSubmit()
+    private void RepositionSelections()
     {
-        return symbolsList;
+        List<Symbols> activeSymbols = new List<Symbols>();
+        for (int i = 0; i < symbolsList.Count; i++)
+        {
+            if (symbolsList[i] != null)
+            {
+                activeSymbols.Add(symbolsList[i]);
+            }
+        }
+
+        for (int i = 0; i < SelectionList.Length; i++)
+        {
+            SelectionList[i].sprite = null;
+        }
+
+        for (int i = 0; i < activeSymbols.Count; i++)
+        {
+            symbolsList[i] = activeSymbols[i];
+            SelectionList[i].sprite = symbolsList[i].Sprite;
+        }
+
+        imageCount = symbolsList.Count;
     }
 
 }

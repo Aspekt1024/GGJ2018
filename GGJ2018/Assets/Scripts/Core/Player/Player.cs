@@ -16,8 +16,8 @@ public class Player : MonoBehaviour {
     {
     }
 
-    public void SendTransmission()
+    public void SendTransmission(List<Symbols> symbols)
     {
-        transmission.SendTransmission();
+        transmission.SendTransmission(symbols);
     }
 }

@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - Msg
-=======
+  - Undefined
   - Transmission
->>>>>>> 4f9b48b8764456cbec4841d947bc7995474572d6
   layers:
   - Default
   - TransparentFX
@@ -44,20 +41,23 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 973366305
+    uniqueID: 180495345
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Transmission
-    uniqueID: 1329075263
-    locked: 0
   - name: Planet
-    uniqueID: 940256465
+    uniqueID: 4246243171
+    locked: 0
+  - name: Transmisison
+    uniqueID: 2697360699
     locked: 0
   - name: InGameOverlay
-    uniqueID: 1727457983
+    uniqueID: 110200843
     locked: 0
   - name: UI
-    uniqueID: 4067429357
+    uniqueID: 2107039081
+    locked: 0
+  - name: New Layer
+    uniqueID: 4160377287
     locked: 0
