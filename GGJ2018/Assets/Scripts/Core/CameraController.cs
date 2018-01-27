@@ -8,29 +8,46 @@ public class CameraController : MonoBehaviour {
     public float ZoomDuration = 1f;
 
     private int levelCount = 0;
-    private int[] scaleLevels = {6, 10, 14, 18 };
+    private int[] scaleLevels = {10, 14, 18};
+    public int[] NumberOfTransmissionsToAdvance = {5, 5, 5};
+    private int transmissionCount = 0;
+
+
+    private Selection selection;
+
+    public void addTransmission()
+    {
+        transmissionCount++;
+        print(transmissionCount);
+    }
+
+
     private float targetSize = 0;
-    private float timer = 0f;
+   // private float timer = 0f;
 
     private void Start()
     {
-        Camera.main.orthographicSize = scaleLevels[0];
+        Camera.main.orthographicSize = 6;
+        selection = FindObjectOfType<Selection>();
+        selection.numSymbols = 1;
             
     }
+    
+
 
     private void Update()
     {
-        if (levelCount >= scaleLevels.Length) return;
-        timer += Time.deltaTime;
+       // if (levelCount >= scaleLevels.Length) return;
+        //timer += Time.deltaTime;
 
-        if (timer >= IntervalTime)
+        if(transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
         {
             targetSize = scaleLevels[levelCount];
             StartCoroutine(Grow());
-
             levelCount++;
-            timer = 0f;
+            transmissionCount = 0;
         }
+
     }
 
 
@@ -38,10 +55,12 @@ public class CameraController : MonoBehaviour {
     {
         float zoomTimer = 0f;
         float startOrthSize = Camera.main.orthographicSize;
+        selection.numSymbols++;
         while (zoomTimer < ZoomDuration)
         {
             zoomTimer += Time.deltaTime;
             Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            
             yield return null;
         }
     }
