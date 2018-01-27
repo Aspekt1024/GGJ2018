@@ -57,6 +57,7 @@ public class PauseMenuHandler : MonoBehaviour {
     
     public void onClickQuit(string lvl)
     {
+        Time.timeScale = 1;
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         PlayerPrefs.SetFloat("SEVolume", soundSlider.value);
         SceneManager.LoadScene(lvl);
