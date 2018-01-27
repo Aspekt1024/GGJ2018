@@ -10,6 +10,7 @@ public class Planet : MonoBehaviour {
     public PlanetResponse ResponseScript;
     public PlanetOpinion OpinionScript;
     public PlanetThoughts ThoughtsScript;
+    public Transform PlanetPrefab;
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
@@ -21,6 +22,10 @@ public class Planet : MonoBehaviour {
     {
         symbolHandler = GameManager.Instance.SymbolHandler;
         symbolDict = new Dictionary<Symbols, int>();
+        GameObject planetPrefab = Instantiate(GameManager.Instance.PlanetPrefabs.GetNewPlanet());
+        planetPrefab.transform.SetParent(PlanetPrefab);
+        planetPrefab.transform.position = transform.position;
+
         SetSymbolDict();
         ThoughtsScript.SetThoughts(symbolDict);
 
@@ -52,12 +57,11 @@ public class Planet : MonoBehaviour {
         ResponseScript.SetReponseImage(this, messageOpinion);
         opinion += messageOpinion;
         OpinionScript.SetOpinion(opinion);
+        Logger.AddLog(this, symbols.ToArray(), messageOpinion);
     }
 
     private void SetSymbolDict()
     {
-        // Used when updating periodically
-        
         for (int i = 0; i < NumSymbols; i++)
         {
             // This works. 1 = positive, else negative. Update if this really bugs us later

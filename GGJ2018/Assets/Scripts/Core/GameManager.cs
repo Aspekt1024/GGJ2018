@@ -7,10 +7,16 @@ public class GameManager : MonoBehaviour {
     
     [HideInInspector] public static GameManager Instance;
     private SymbolHandler symbolHandler;
+    private PlanetPrefabHandler planetPrefabs;
 
     public SymbolHandler SymbolHandler
     {
         get { return symbolHandler; }
+    }
+
+    public PlanetPrefabHandler PlanetPrefabs
+    {
+        get { return planetPrefabs; }
     }
     
     public Player Player
@@ -42,6 +48,7 @@ public class GameManager : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 
+        planetPrefabs = GetComponent<PlanetPrefabHandler>();
         symbolHandler = GetComponent<SymbolHandler>();
         player = FindObjectOfType<Player>();
         inputHandler = new InputHandler(this);

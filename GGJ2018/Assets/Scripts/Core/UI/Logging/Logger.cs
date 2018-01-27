@@ -5,6 +5,7 @@ using UnityEngine;
 public class Logger : MonoBehaviour {
 
     public static Logger Instance;
+    // TODO num logs to store
     
     public struct LogEntry
     {
@@ -13,6 +14,11 @@ public class Logger : MonoBehaviour {
         public int MessageResponse;
     }
     private List<LogEntry> log;
+
+    public List<LogEntry> GetLogs()
+    {
+        return log;
+    }
 
 	private void Awake ()
     {
@@ -41,5 +47,6 @@ public class Logger : MonoBehaviour {
     public static void AddLog(LogEntry logEntry)
     {
         Instance.log.Add(logEntry);
+        GameUI.UpdateLog();
     }
 }
