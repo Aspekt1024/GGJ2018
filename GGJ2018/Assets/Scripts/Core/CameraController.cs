@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 
     private void Update()
     {
-        if (levelCount >+ scaleLevels.Length) return;
+        if (levelCount >= scaleLevels.Length) return;
         timer += Time.deltaTime;
 
         if (timer >= IntervalTime)
