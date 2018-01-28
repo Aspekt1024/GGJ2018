@@ -18,6 +18,9 @@ public class Planet : MonoBehaviour {
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
 
+    private int numHates;
+    private int numLikes;
+
     private void Awake()
     {
         symbolDict = new Dictionary<Symbols, int>();
