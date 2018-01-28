@@ -69,7 +69,7 @@ public class Selection : MonoBehaviour {
             imageCount++;
         }
 
-        if (GameStats.Instance.CanSendTransmission())
+        if (symbolsList.Count == numSymbols && GameStats.Instance.CanSendTransmission())
         {
             GameUI.ShowTransmitButton();
         }

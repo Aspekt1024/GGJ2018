@@ -48,7 +48,10 @@ public class EndGameUI : MonoBehaviour {
 
         ReturnToMenuButton.SetActive(true);
         ScoreText.enabled = true;
-        ScoreText.text = string.Format("Number of friends: {0}\nNumber of blocks: {1}\n\nNet popularity: {2}", GameStats.Instance.GetNumFriends(), GameStats.Instance.GetNumBlocks(), GameStats.Instance.GetNetOpinion());
+        ScoreText.text = string.Format("Number of friends: {0}\nNumber of blocks: {1}\n\nNet popularity: {2}",
+                            GameStats.Instance.GetNumFriends(),
+                            GameStats.Instance.GetNumBlocks(),
+                            GameStats.Instance.GetNetOpinion());
 
     }
 
