@@ -8,22 +8,18 @@ using UnityEngine;
 public class PauseMenuHandler : MonoBehaviour {
 
     public AudioMixer mixer;
+    public Slider MusicVolumeSlider;
+    public Slider SoundEffectsVolumeSlider;
 
     public GameObject pausePanel;
     bool paused = false;
 
-    Slider musicSlider;
-    Slider soundSlider;
-
     private void Awake()
     {
-        musicSlider = GameObject.Find("Music Volume").GetComponent<Slider>();
-        soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
-        float currentVol;
-        mixer.GetFloat("MusicVolume", out currentVol);
-        musicSlider.value = currentVol;
-        mixer.GetFloat("SoundEffectsVolume", out currentVol);
-        soundSlider.value = currentVol;
+        float currentVol = PlayerPrefs.GetFloat("MusicVolume");
+        MusicVolumeSlider.value = currentVol;
+        currentVol = PlayerPrefs.GetFloat("SEVolume");
+        SoundEffectsVolumeSlider.value = currentVol;
     }
 
     // Use this for initialization
@@ -56,18 +52,21 @@ public class PauseMenuHandler : MonoBehaviour {
     
     public void onClickQuit(string lvl)
     {
+        Time.timeScale = 1;
+        PlayerPrefs.SetFloat("MusicVolume", MusicVolumeSlider.value);
+        PlayerPrefs.SetFloat("SEVolume", SoundEffectsVolumeSlider.value);
         SceneManager.LoadScene(lvl);
     }
 
     public void ChangeMusicVolume()
     {
-        float val = musicSlider.value;
+        float val = MusicVolumeSlider.value;
         mixer.SetFloat("MusicVolume", val);
     }
 
     public void ChangeSEVolume()
     {
-        float val = soundSlider.value;
+        float val = SoundEffectsVolumeSlider.value;
         mixer.SetFloat("SoundEffectsVolume", val);
     }
 }

@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 
     private int levelCount = 0;
     private int[] scaleLevels = {10, 14, 18};
-    public int[] NumberOfTransmissionsToAdvance = {5, 5, 5};
+    public int[] NumberOfTransmissionsToAdvance = {3, 5, 5};
     private int transmissionCount = 0;
 
 
@@ -19,10 +19,8 @@ public class CameraController : MonoBehaviour {
     {
         transmissionCount++;
     }
-
-
+    
     private float targetSize = 0;
-   // private float timer = 0f;
 
     private void Start()
     {
@@ -36,20 +34,14 @@ public class CameraController : MonoBehaviour {
 
     private void Update()
     {
-       // if (levelCount >= scaleLevels.Length) return;
-        //timer += Time.deltaTime;
+        if (levelCount >= scaleLevels.Length) return;
 
         if(transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
         {
-            targetSize = scaleLevels[levelCount];
-            StartCoroutine(Grow());
-            levelCount++;
-            transmissionCount = 0;
+            IncrementPhase();
         }
-
     }
-
-
+    
     private IEnumerator Grow()
     {
         float zoomTimer = 0f;
@@ -63,5 +55,32 @@ public class CameraController : MonoBehaviour {
             yield return null;
         }
     }
+
+    private void IncrementPhase()
+    {
+        targetSize = scaleLevels[levelCount];
+        StartCoroutine(Grow());
+        levelCount++;
+        transmissionCount = 0;
+
+        switch (levelCount)
+        {
+            case 1:
+                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase1);
+                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase1);
+                break;
+            case 2:
+                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase2);
+                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase2);
+                break;
+            case 3:
+                GameManager.UnlockPhase(PlanetUnlocker.Phase.Phase3);
+                GameUI.SetSelectionPhase(PlanetUnlocker.Phase.Phase3);
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 

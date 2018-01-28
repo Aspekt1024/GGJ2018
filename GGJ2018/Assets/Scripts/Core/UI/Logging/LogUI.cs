@@ -10,6 +10,7 @@ public class LogUI : MonoBehaviour
     public RectTransform LogContent;
     public RectTransform MessagePrefab;
     public Scrollbar VericalScroll;
+    public Text PlanetFeedIndicatorText;
 
     private Planet planetFilter;
     private List<LogMessage> messages;
@@ -19,17 +20,21 @@ public class LogUI : MonoBehaviour
     private void Start()
     {
         messages = new List<LogMessage>();
+        PlanetFeedIndicatorText.text = "";
     }
 
     public void SetLogFilter(Planet planet)
     {
         planetFilter = planet;
+        PlanetFeedIndicatorText.text = planet.PlanetName + "'s feed:";
         UpdateLogs();
     }
 
     public void ClearFilter()
     {
         planetFilter = null;
+        PlanetFeedIndicatorText.text = "";
+        UpdateLogs();
     }
 
     private void ClearAllLogs()
@@ -49,8 +54,7 @@ public class LogUI : MonoBehaviour
         List<Logger.LogEntry> logs = Logger.Instance.GetLogs();
 
         List<Logger.LogEntry> logsToPrint = new List<Logger.LogEntry>();
-
-
+        
         if (planetFilter == null)
         {
             logsToPrint = logs;

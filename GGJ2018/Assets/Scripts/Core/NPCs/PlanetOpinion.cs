@@ -21,6 +21,8 @@ public class PlanetOpinion : MonoBehaviour {
 
     public SpriteRenderer RelationshipSprite;
 
+    private int opinion;
+
     private enum States
     {
         Neutral, Happy, Friends, Unhappy, Angry, Blocked
@@ -32,6 +34,11 @@ public class PlanetOpinion : MonoBehaviour {
         UpdateOpinionGraphic();
     }
 
+    public int Opinion
+    {
+        get { return opinion; }
+    }
+
     public bool IsBlocked()
     {
         return state == States.Blocked;
@@ -39,12 +46,18 @@ public class PlanetOpinion : MonoBehaviour {
 
     public void SetOpinion(int opinion)
     {
+        this.opinion = opinion;
         if (opinion > FriendsValue)
         {
+            GameStats.Instance.AddFriend(GetComponentInParent<Planet>());
             state = States.Friends;
         }
         else if (opinion > HappyValue)
         {
+            if (state == States.Friends)
+            {
+                GameStats.Instance.RemoveFriend(GetComponentInParent<Planet>());
+            }
             state = States.Happy;
         }
         else if (opinion > UnhappyValue)
@@ -61,6 +74,7 @@ public class PlanetOpinion : MonoBehaviour {
         }
         else
         {
+            GameStats.Instance.AddBlock(GetComponentInParent<Planet>());
             state = States.Blocked;
         }
         UpdateOpinionGraphic();
