@@ -19,5 +19,6 @@ public class Player : MonoBehaviour {
     public void SendTransmission(List<Symbols> symbols)
     {
         transmission.SendTransmission(symbols);
+        SoundBites.Instance.PlayTransmissionSent();
     }
 }
