@@ -545,11 +545,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeutralValue: 0
-  HappyValue: 3
+  HappyValue: 2
   FriendsValue: 7
-  UnhappyValue: -3
+  UnhappyValue: -2
   AngryValue: -6
-  BlockedValue: -9
+  BlockedValue: -10
   HappySprite: {fileID: 21300000, guid: 1dd92e4493248cd4983b6a4072fe52f5, type: 3}
   NeutralSprite: {fileID: 21300000, guid: 712cf62ee32dbd14ea626aa7b0593c2f, type: 3}
   UnhappySprite: {fileID: 21300000, guid: 406501cd61e1dfc47a8ee0ad7f7f68be, type: 3}
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87237a8cf4306d545bf9a52a50a66b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowResponseDuration: 2
+  ShowResponseDuration: 3
   ResponseAnimator: {fileID: 95028783695474128}
 --- !u!114 &114568953368149200
 MonoBehaviour:
@@ -17423,7 +17423,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.024, y: 1.024}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

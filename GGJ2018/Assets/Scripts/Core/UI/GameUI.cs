@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour {
     public EndGameUI EndGameUI;
     public LogUI LogUI;
     public Selection SelectionHandler;
+    public Battery BatteryUI;
 
     public static GameUI Instance;
 
@@ -21,6 +22,8 @@ public class GameUI : MonoBehaviour {
             Destroy(this);
             return;
         }
+
+        EndGameUI.DisableUI();
     }
 
     public static void UpdateLog()
@@ -31,5 +34,15 @@ public class GameUI : MonoBehaviour {
     public static void SetSelectionPhase(PlanetUnlocker.Phase phase)
     {
         Instance.SelectionHandler.SetPhase(phase);
+    }
+
+    public static void ShowEndGameUI(EndGameUI.EndGameUITypes endGameType)
+    {
+        Instance.EndGameUI.EnableUI(endGameType);
+    }
+
+    public static void SetBatteryPercent(float percent)
+    {
+        Instance.BatteryUI.SetBatteryPercentage(percent);
     }
 }

@@ -65,7 +65,7 @@ public class GameStats : MonoBehaviour
         blocks.Add(planet);
         if (EndGameAfterBlocks && numBlocks >= NumBlocksBeforeEnd)
         {
-            Debug.Log("END OF GAME - ALL THE BLOCKS!!!!");
+            GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.TooManyBlocks);
         }
     }
 
@@ -85,7 +85,7 @@ public class GameStats : MonoBehaviour
         numTransmissionsSent++;
         if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
         {
-            Debug.Log("END OF GAME!");
+            GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
         }
     }
 
