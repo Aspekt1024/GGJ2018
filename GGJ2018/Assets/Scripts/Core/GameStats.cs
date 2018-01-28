@@ -13,7 +13,7 @@ public class GameStats : MonoBehaviour
 
     public bool EndGameAfterBlocks = true;
     public int NumBlocksBeforeEnd = 3;
-
+    
     public static GameStats Instance;
 
     private int numFriends;
@@ -85,8 +85,14 @@ public class GameStats : MonoBehaviour
         numTransmissionsSent++;
         if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
         {
-            GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
+            GameUI.HideTransmitButton();
+            Invoke("ShowMaxTransmissionsEndgameUI", 4f);
         }
+    }
+
+    private void ShowMaxTransmissionsEndgameUI()
+    {
+        GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
     }
 
     private void CalculateNetOpinion()
