@@ -26,7 +26,7 @@ public class LogUI : MonoBehaviour
     public void SetLogFilter(Planet planet)
     {
         planetFilter = planet;
-        PlanetFeedIndicatorText.text = planet.PlanetName + "'s feed:";
+        PlanetFeedIndicatorText.text = "@" + planet.PlanetName + ":";
         UpdateLogs();
     }
 

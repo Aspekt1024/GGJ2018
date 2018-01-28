@@ -2,11 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndGameUI : MonoBehaviour {
 
-    public Text EndGameHeadingText;
+    public Image BatteryImage;
+    public Image LogoffImage;
+    public Image BlockedImage;
+    public GameObject ReturnToMenuButton;
 
+    public Text ScoreText;
+
+    private void Start()
+    {
+        BlockedImage.enabled = false;
+        LogoffImage.enabled = false;
+        BatteryImage.enabled = false;
+        ScoreText.text = "";
+        ReturnToMenuButton.SetActive(false);
+    }
 
     public enum EndGameUITypes
     {
@@ -20,22 +34,31 @@ public class EndGameUI : MonoBehaviour {
         switch (type)
         {
             case EndGameUITypes.TooManyBlocks:
-                EndGameHeadingText.text = "No one likes you.";
+                BlockedImage.enabled = true;
                 break;
             case EndGameUITypes.Logout:
-                EndGameHeadingText.text = "Where did everyone go?";
+                LogoffImage.enabled = true;
                 break;
             case EndGameUITypes.MaxTurnsReached:
-                EndGameHeadingText.text = "End of days.";
+                BatteryImage.enabled = true;
                 break;
             default:
                 break;
         }
+
+        ReturnToMenuButton.SetActive(true);
+        ScoreText.enabled = true;
+        ScoreText.text = string.Format("Number of friends: {0}\nNumber of blocks: {1}\n\nNet popularity: {2}", GameStats.Instance.GetNumFriends(), GameStats.Instance.GetNumBlocks(), GameStats.Instance.GetNetOpinion());
 
     }
 
     public void DisableUI()
     {
         gameObject.SetActive(false);
+    }
+
+    public void ReturnToMenuClicked()
+    {
+        Application.Quit();
     }
 }
