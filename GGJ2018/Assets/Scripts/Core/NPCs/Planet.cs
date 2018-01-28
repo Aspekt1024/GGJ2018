@@ -18,6 +18,9 @@ public class Planet : MonoBehaviour {
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
     private SymbolHandler symbolHandler;
 
+    private int numHates;
+    private int numLikes;
+
     private void Awake()
     {
         symbolDict = new Dictionary<Symbols, int>();
@@ -58,9 +61,19 @@ public class Planet : MonoBehaviour {
     {
         for (int i = 0; i < NumSymbols; i++)
         {
-            // This works. 1 = positive, else negative. Update if this really bugs us later
             int newWeight = Random.Range(0, 2);
             if (newWeight == 0) newWeight = -1;
+            if (numHates >= NumSymbols / 2)
+            {
+                newWeight = 1;
+            }
+            else if (numLikes >= NumSymbols / 2)
+            {
+                newWeight = -1;
+            }
+
+            if (newWeight > 0) numLikes++;
+            if (newWeight < 0) numHates++;
 
             Symbols newSymbol = GetNewSymbol();
             if (newSymbol != null)

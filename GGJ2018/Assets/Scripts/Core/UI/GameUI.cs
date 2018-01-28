@@ -8,10 +8,11 @@ public class GameUI : MonoBehaviour {
     public LogUI LogUI;
     public Selection SelectionHandler;
     public Battery BatteryUI;
+    public GameObject TransmitButton;
 
     public static GameUI Instance;
 
-    private void Start()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -23,6 +24,10 @@ public class GameUI : MonoBehaviour {
             return;
         }
 
+    }
+
+    private void Start()
+    {
         EndGameUI.DisableUI();
     }
 
@@ -45,4 +50,16 @@ public class GameUI : MonoBehaviour {
     {
         Instance.BatteryUI.SetBatteryPercentage(percent);
     }
+
+    public static void HideTransmitButton()
+    {
+        Instance.TransmitButton.SetActive(false);
+    }
+
+    public static void ShowTransmitButton()
+    {
+        Instance.TransmitButton.SetActive(true);
+    }
+
+
 }
