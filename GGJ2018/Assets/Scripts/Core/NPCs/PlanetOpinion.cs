@@ -76,6 +76,7 @@ public class PlanetOpinion : MonoBehaviour {
         {
             GameStats.Instance.AddBlock(GetComponentInParent<Planet>());
             state = States.Blocked;
+            SoundBites.Instance.PlayBlockedSound();
         }
         UpdateOpinionGraphic();
     }
