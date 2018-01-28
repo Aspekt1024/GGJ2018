@@ -9,6 +9,7 @@ public class GameUI : MonoBehaviour {
     public Selection SelectionHandler;
     public Battery BatteryUI;
     public GameObject TransmitButton;
+    public LogoutUI LogoutUI;
 
     public static GameUI Instance;
 
@@ -28,6 +29,7 @@ public class GameUI : MonoBehaviour {
 
     private void Start()
     {
+        LogoutUI.DisableUI();
         EndGameUI.DisableUI();
     }
 

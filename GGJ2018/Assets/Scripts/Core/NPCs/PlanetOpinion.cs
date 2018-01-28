@@ -21,6 +21,12 @@ public class PlanetOpinion : MonoBehaviour {
 
     public SpriteRenderer RelationshipSprite;
 
+    public ParticleSystem AngryPS;
+    public ParticleSystem BlockedPS;
+    public ParticleSystem FriendPS;
+    public ParticleSystem UnhappyPS;
+    public ParticleSystem HappyPS;
+
     private int opinion;
 
     private enum States
@@ -32,6 +38,11 @@ public class PlanetOpinion : MonoBehaviour {
     private void Start()
     {
         UpdateOpinionGraphic();
+        AngryPS.gameObject.SetActive(false);
+        BlockedPS.gameObject.SetActive(false);
+        FriendPS.gameObject.SetActive(false);
+        UnhappyPS.gameObject.SetActive(false);
+        HappyPS.gameObject.SetActive(false);
     }
 
     public int Opinion
@@ -46,6 +57,7 @@ public class PlanetOpinion : MonoBehaviour {
 
     public void SetOpinion(int opinion)
     {
+        States currentState = state;
         this.opinion = opinion;
         if (opinion > FriendsValue)
         {
@@ -78,6 +90,12 @@ public class PlanetOpinion : MonoBehaviour {
             state = States.Blocked;
             SoundBites.Instance.PlayBlockedSound();
         }
+
+        if (state != currentState)
+        {
+            PlayParticleEffect();
+        }
+
         UpdateOpinionGraphic();
     }
 
@@ -102,6 +120,37 @@ public class PlanetOpinion : MonoBehaviour {
                 break;
             case States.Blocked:
                 RelationshipSprite.sprite = BlockedSprite;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PlayParticleEffect()
+    {
+        switch (state)
+        {
+            case States.Neutral:
+                break;
+            case States.Happy:
+                HappyPS.gameObject.SetActive(true);
+                HappyPS.Play();
+                break;
+            case States.Friends:
+                FriendPS.gameObject.SetActive(true);
+                FriendPS.Play();
+                break;
+            case States.Unhappy:
+                UnhappyPS.gameObject.SetActive(true);
+                UnhappyPS.Play();
+                break;
+            case States.Angry:
+                AngryPS.gameObject.SetActive(true);
+                AngryPS.Play();
+                break;
+            case States.Blocked:
+                BlockedPS.gameObject.SetActive(true);
+                BlockedPS.Play();
                 break;
             default:
                 break;

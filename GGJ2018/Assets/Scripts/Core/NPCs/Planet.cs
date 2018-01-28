@@ -104,4 +104,10 @@ public class Planet : MonoBehaviour {
         Visuals.SetActive(false);
         Explosion.SetActive(true);
     }
+    
+    public IEnumerator ExplodePlanet(Planet planet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        planet.Explode();
+    }
 }
