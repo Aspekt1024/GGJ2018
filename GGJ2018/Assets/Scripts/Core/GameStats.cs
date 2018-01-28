@@ -90,6 +90,15 @@ public class GameStats : MonoBehaviour
         }
     }
 
+    public bool CanSendTransmission()
+    {
+        if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
+        {
+            return false;
+        }
+        return true;
+    }
+
     private void ShowMaxTransmissionsEndgameUI()
     {
         GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
