@@ -60,7 +60,7 @@ public class Selection : MonoBehaviour {
 
     public void addSymbol(Symbols symbols)
     {
-        
+        SoundBites.Instance.PlaySelectSymbol();
         symbolsList.Add(symbols);
         if(imageCount <= numSymbols)
         {
@@ -69,7 +69,7 @@ public class Selection : MonoBehaviour {
             imageCount++;
         }
 
-        if (symbolsList.Count == numSymbols)
+        if (GameStats.Instance.CanSendTransmission())
         {
             GameUI.ShowTransmitButton();
         }
@@ -120,7 +120,7 @@ public class Selection : MonoBehaviour {
 
         if (numSelectedSymbols == numSymbols)
         {
-            SoundBites.Instance.PlayTransmissionSent();
+           
             GameManager.Instance.Player.SendTransmission(symbolsList);
             resetList();
             RepositionSelections();

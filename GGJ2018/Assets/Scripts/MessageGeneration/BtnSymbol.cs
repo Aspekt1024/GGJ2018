@@ -36,6 +36,7 @@ public class BtnSymbol : MonoBehaviour {
             SetStateOn();
         else if (hasBeenAdded)
         {
+            SoundBites.Instance.PlayDeselectSymbol();
             SetStateOff();
         }
     }
@@ -48,7 +49,7 @@ public class BtnSymbol : MonoBehaviour {
             return;
         };
 
-        SoundBites.Instance.PlaySelectSymbol();
+        
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = Color.green;
         ImageRenderer.color = cb.normalColor;
@@ -59,7 +60,7 @@ public class BtnSymbol : MonoBehaviour {
     public void SetStateOff()
     {
 
-        SoundBites.Instance.PlayDeselectSymbol();
+        
         ColorBlock cb = toggleState.colors;
         cb.normalColor = cb.highlightedColor = originalColor;
         ImageRenderer.color = cb.normalColor;
