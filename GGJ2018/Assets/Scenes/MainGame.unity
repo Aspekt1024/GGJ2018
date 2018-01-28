@@ -1900,7 +1900,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a74b4b4c184e64a85a06a0f19f1041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   EndGameUI: {fileID: 286950392}
+=======
+  EndGameUI: {fileID: 0}
+>>>>>>> Added more sounds
   LogUI: {fileID: 61441507}
   SelectionHandler: {fileID: 590037611}
 --- !u!114 &865009156
@@ -2847,7 +2851,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0986c2135f0bb674e91fa84b0d7e1d12, type: 3}
   - {fileID: 8300000, guid: 0ea74678ea44fee41a04d664db5631a9, type: 3}
   - {fileID: 8300000, guid: ef1a99b2dd486a44c95d6e8b03fd8361, type: 3}
+<<<<<<< HEAD
   - {fileID: 8300000, guid: 72a7918e36831514bba0050a25eff715, type: 3}
+=======
+  - {fileID: 8300000, guid: 431c8e6097cff0c4da3e489d117ba6de, type: 3}
+  - {fileID: 8300000, guid: a7aae71ae41af4e4fa192dba702a5cad, type: 3}
+  - {fileID: 8300000, guid: 309c66ae78d20de48bc7149e948b3ba4, type: 3}
+  - {fileID: 8300000, guid: 0d091ebba808da24f8b3df2fbbd79ac6, type: 3}
+>>>>>>> Added more sounds
 --- !u!82 &1314441948
 AudioSource:
   m_ObjectHideFlags: 0

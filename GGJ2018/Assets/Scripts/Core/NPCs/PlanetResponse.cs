@@ -33,6 +33,7 @@ public class PlanetResponse : MonoBehaviour {
         else
         {
             ResponseAnimator.Play(neutralAnimationString, 0, 0f);
+            SoundBites.Instance.PlayNeutralSound();
         }
 
         Invoke(((Action)HideResponse).Method.Name, ShowResponseDuration);

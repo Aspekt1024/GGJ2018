@@ -38,9 +38,7 @@ public class SoundBites : MonoBehaviour {
     }
     public void PlayDislike()
     {
-
             audioSource.PlayOneShot(soundEffects[2]);
-
     }
     public void PlayLike()
     {
@@ -60,9 +58,23 @@ public class SoundBites : MonoBehaviour {
     }
     public void PlayTransmissionSent()
     {
-
             audioSource.PlayOneShot(soundEffects[6]);
-
     }
  
+    public void PlayBlockedSound()
+    {
+        audioSource.PlayOneShot(soundEffects[7]);
+    }
+
+    public void PlayExplosionSound()
+    {
+        audioSource.PlayOneShot(soundEffects[8]);
+    }
+
+    public void PlayNeutralSound()
+    {
+        audioSource.PlayOneShot(soundEffects[9]);
+    }
+
+
 }

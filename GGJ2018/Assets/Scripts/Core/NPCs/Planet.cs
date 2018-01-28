@@ -87,6 +87,7 @@ public class Planet : MonoBehaviour {
 
     public void Explode()
     {
+        SoundBites.Instance.PlayExplosionSound();
         Visuals.SetActive(false);
         Explosion.SetActive(true);
     }
