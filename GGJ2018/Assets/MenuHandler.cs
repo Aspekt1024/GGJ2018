@@ -6,11 +6,6 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour {
-
-    private float zoomTimer = 0f;
-    private float ZoomDuration = 1f;
-    private float targetSize = 6;
-    private float startOrthSize;
     
     public GameObject mainPanel;
     public GameObject optionsPanel;
@@ -21,7 +16,6 @@ public class MenuHandler : MonoBehaviour {
 
     private void Awake()
     {
-        startOrthSize = Camera.main.orthographicSize;
         musicSlider = GameObject.Find("Music Volume").GetComponent<Slider>();
         soundSlider = GameObject.Find("Sound Effects Volume").GetComponent<Slider>();
         mainPanel.SetActive(true);

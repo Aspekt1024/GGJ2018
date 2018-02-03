@@ -10,9 +10,10 @@ public class LogMessage : MonoBehaviour {
     public Image Symbol3;
     public Image Symbol4;
     public Text ResponseText;
+    public int MessageIndex;
 
     private Logger.LogEntry entry;
-
+    
 
     public void SetMessage(Logger.LogEntry logEntry)
     {
