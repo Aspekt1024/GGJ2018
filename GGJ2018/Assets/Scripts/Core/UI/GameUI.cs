@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour {
     
-    public EndGameUI EndGameUI;
     public LogUI LogUI;
     public Selection SelectionHandler;
     public Battery BatteryUI;
     public GameObject TransmitButton;
+
+    public EndGameUI EndGameUI;
     public LogoutUI LogoutUI;
 
     public static GameUI Instance;

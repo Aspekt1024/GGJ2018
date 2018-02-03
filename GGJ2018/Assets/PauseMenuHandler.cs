@@ -11,43 +11,34 @@ public class PauseMenuHandler : MonoBehaviour {
     public Slider MusicVolumeSlider;
     public Slider SoundEffectsVolumeSlider;
 
-    public GameObject pausePanel;
+    private CanvasGroup canvasGroup;
     bool paused = false;
 
     private void Awake()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+        DisablePanel();
+
         float currentVol = PlayerPrefs.GetFloat("MusicVolume");
         MusicVolumeSlider.value = currentVol;
         currentVol = PlayerPrefs.GetFloat("SEVolume");
         SoundEffectsVolumeSlider.value = currentVol;
     }
-
-    // Use this for initialization
-    private void Start () {
-        pausePanel.SetActive(false);
-    }
-	
-	// Update is called once per frame
+    
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
-            Time.timeScale = 0;
-            pausePanel.SetActive(true);
-            paused = true;
+            Pause();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && paused)
         {
-            pausePanel.SetActive(false);
-            Time.timeScale = 1;
-            paused = false;
+            Unpause();
         }
 	}
 
     public void onClickReturn()
     {
-        pausePanel.SetActive(false);
-        Time.timeScale = 1;
-        paused = false;
+        Unpause();
     }
     
     public void onClickQuit(string lvl)
@@ -68,5 +59,31 @@ public class PauseMenuHandler : MonoBehaviour {
     {
         float val = SoundEffectsVolumeSlider.value;
         mixer.SetFloat("SoundEffectsVolume", val);
+    }
+
+    private void Pause()
+    {
+        EnablePanel();
+        Time.timeScale = 0;
+        paused = true;
+    }
+
+    private void Unpause()
+    {
+        DisablePanel();
+        Time.timeScale = 1;
+        paused = false;
+    }
+
+    private void EnablePanel()
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    private void DisablePanel()
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
     }
 }
