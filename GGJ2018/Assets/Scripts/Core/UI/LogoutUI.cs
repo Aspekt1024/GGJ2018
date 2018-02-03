@@ -6,16 +6,25 @@ using UnityEngine;
 public class LogoutUI : MonoBehaviour {
 
     private bool LogoutConfirmedEndOfGameOHMYGOD;
+    private CanvasGroup canvasGroup;
+
+    private void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        DisableUI();
+    }
 
     public void DisableUI()
     {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void EnableUI()
     {
         if (LogoutConfirmedEndOfGameOHMYGOD) return;
-        gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
     }
 
     public void LogoutYesClicked()

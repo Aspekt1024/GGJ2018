@@ -13,8 +13,12 @@ public class EndGameUI : MonoBehaviour {
 
     public Text ScoreText;
 
+    private CanvasGroup canvasGroup;
+
     private void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+
         BlockedImage.enabled = false;
         LogoffImage.enabled = false;
         BatteryImage.enabled = false;
@@ -29,7 +33,8 @@ public class EndGameUI : MonoBehaviour {
 
     public void EnableUI(EndGameUITypes type)
     {
-        gameObject.SetActive(true);
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
 
         switch (type)
         {
@@ -57,7 +62,8 @@ public class EndGameUI : MonoBehaviour {
 
     public void DisableUI()
     {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0f;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void ReturnToMenuClicked()
