@@ -68,6 +68,6 @@ public class EndGameUI : MonoBehaviour {
 
     public void ReturnToMenuClicked()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Play");
     }
 }

@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
 
         planetUnlocker = GetComponent<PlanetUnlocker>();
         planetPrefabs = GetComponent<PlanetPrefabHandler>();

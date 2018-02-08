@@ -232,7 +232,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69202099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 132.06116, z: 0}
+  m_LocalPosition: {x: 0, y: -6.735321, z: 0}
   m_LocalScale: {x: 3.5996323, y: 3.5996335, z: 3.5996335}
   m_Children: []
   m_Father: {fileID: 623123531}
@@ -1495,7 +1495,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 530337493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58, y: -262.06116, z: 0}
+  m_LocalPosition: {x: 58, y: -123.26468, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 623123531}
@@ -2294,7 +2294,7 @@ RectTransform:
   m_GameObject: {fileID: 865009153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.017643886, y: 0.017643886, z: 0.017643886}
+  m_LocalScale: {x: 0.029811488, y: 0.029811488, z: 0.029811488}
   m_Children:
   - {fileID: 2084969260}
   - {fileID: 122788317}
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1688340665}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999997
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3251,7 +3251,7 @@ GameObject:
   - component: {fileID: 1143123138}
   - component: {fileID: 1143123137}
   m_Layer: 0
-  m_Name: ExitGameButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3264,7 +3264,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143123135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 286, y: -306.06116, z: 0}
+  m_LocalPosition: {x: 286, y: -167.26468, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1588008379}
@@ -3390,7 +3390,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1182009112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 132.06116, z: 0}
+  m_LocalPosition: {x: 0, y: -6.735321, z: 0}
   m_LocalScale: {x: 3.5996323, y: 3.5996335, z: 3.5996335}
   m_Children: []
   m_Father: {fileID: 623123531}
@@ -4698,7 +4698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit Game
+  m_Text: Return to Menu
 --- !u!222 &1588008381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5214,7 +5214,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1688340664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000022888184, y: 0, z: 0}
+  m_LocalPosition: {x: -0.000030517578, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 798023512}
@@ -5846,7 +5846,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889465203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 132.06116, z: 0}
+  m_LocalPosition: {x: 0, y: -6.735321, z: 0}
   m_LocalScale: {x: 3.5996323, y: 3.5996335, z: 3.5996335}
   m_Children: []
   m_Father: {fileID: 623123531}
@@ -6372,7 +6372,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2084969259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -264.06116, z: 0}
+  m_LocalPosition: {x: 0, y: -125.26468, z: 0}
   m_LocalScale: {x: 0.334084, y: 3.5160427, z: 1.5536224}
   m_Children:
   - {fileID: 1451799634}
