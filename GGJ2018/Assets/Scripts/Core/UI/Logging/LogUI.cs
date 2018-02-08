@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ public class LogUI : MonoBehaviour
     private Range prevRange;
     private bool resetLogs;
     private List<Logger.LogEntry> logsToPrint;
+
+    private Coroutine scrollToBottomRoutine;
 
     private void Start()
     {
@@ -135,7 +138,12 @@ public class LogUI : MonoBehaviour
 
         LogContent.sizeDelta = new Vector2(LogContent.sizeDelta.x, ySize);
         RecalculateStartPos();
-        Invoke(((Action)SetScrollBottom).Method.Name, 0.02f);
+
+        if (scrollToBottomRoutine != null)
+        {
+            StopCoroutine(scrollToBottomRoutine);
+        }
+        scrollToBottomRoutine = StartCoroutine(SetScrollBottom());
     }
 
     private void CreateMessagePool()
@@ -198,9 +206,20 @@ public class LogUI : MonoBehaviour
         startPos = new Vector2(xPos, yPos);
     }
 
-    private void SetScrollBottom()
+    private IEnumerator SetScrollBottom()
     {
-        VerticalScroll.value = 0;
+        yield return null;
+        float scrollDuration = 0.3f;
+        float timer = 0;
+        float originalPos = VerticalScroll.value;
+
+        while (timer < scrollDuration)
+        {
+            timer += Time.deltaTime;
+
+            VerticalScroll.value = Mathf.Lerp(originalPos, 0, timer / scrollDuration);
+            yield return null;
+        }
     }
 
     private Range GetMinMaxIndex()
