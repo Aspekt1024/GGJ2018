@@ -36,7 +36,7 @@ public class Planet : MonoBehaviour {
         SetSymbolDict();
     }
 
-    public void GiveMessage(List<Symbols> symbols)
+    public void GiveMessage(List<Symbols> symbols, Logger.LogEntry entry)
     {
         if (opinion <= OpinionScript.BlockedValue)
         {
@@ -51,10 +51,10 @@ public class Planet : MonoBehaviour {
                 messageOpinion += symbolDict[symbol];
             }
         }
+        Logger.AddLog(this, symbols.ToArray(), messageOpinion, entry);
         ResponseScript.SetReponseImage(this, messageOpinion);
         opinion += messageOpinion;
-        OpinionScript.SetOpinion(opinion);
-        Logger.AddLog(this, symbols.ToArray(), messageOpinion);
+        OpinionScript.SetOpinion(opinion, entry);
     }
 
     private void SetSymbolDict()

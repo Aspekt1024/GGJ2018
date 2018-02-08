@@ -25,6 +25,8 @@ public class TransmissionHandler : MonoBehaviour {
         controller.addTransmission();
         GameUI.SetBatteryPercent((float) (GameStats.Instance.NumTransmissionsBeforeEnd -transmissionNumber) / GameStats.Instance.NumTransmissionsBeforeEnd);
 
+        Logger.LogEntry entry = Logger.AddLog(symbols.ToArray());
+        newTransmission.SetLogEntry(entry);
         GameStats.Instance.SentTransmission();
     }
 }

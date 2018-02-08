@@ -11,6 +11,7 @@ public class Transmission : MonoBehaviour {
     private float elapsedTime;
     private TransmissionRenderer txRenderer;
     private List<Symbols> symbols;
+    private Logger.LogEntry logEntry;
 
     private void Awake()
     {
@@ -40,6 +41,11 @@ public class Transmission : MonoBehaviour {
         transform.position = GameManager.Instance.Player.transform.position;
     }
 
+    public void SetLogEntry(Logger.LogEntry entry)
+    {
+        logEntry = entry;
+    }
+
     private void Update()
     {
         elapsedTime += Time.deltaTime;
@@ -64,7 +70,7 @@ public class Transmission : MonoBehaviour {
                 {
                     if (Vector2.Distance(planet.transform.position, GameManager.Instance.Player.transform.position) > size - 1f && !planetsHit.Contains(planet))
                     {
-                        planet.GiveMessage(symbols);
+                        planet.GiveMessage(symbols, logEntry);
                         planetsHit.Add(planet);
                     }
                 }

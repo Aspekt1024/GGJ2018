@@ -55,13 +55,16 @@ public class PlanetOpinion : MonoBehaviour {
         return state == States.Blocked;
     }
 
-    public void SetOpinion(int opinion)
+    public void SetOpinion(int opinion, Logger.LogEntry logEntry)
     {
         States currentState = state;
         this.opinion = opinion;
         if (opinion > FriendsValue)
         {
-            GameStats.Instance.AddFriend(GetComponentInParent<Planet>());
+            if (state != States.Friends)
+            {
+                GameStats.Instance.AddFriend(GetComponentInParent<Planet>());
+            }
             state = States.Friends;
         }
         else if (opinion > HappyValue)
@@ -94,9 +97,10 @@ public class PlanetOpinion : MonoBehaviour {
         if (state != currentState)
         {
             PlayParticleEffect();
+            UpdateOpinionGraphic();
+            Logger.AddStatusLog(GetComponentInParent<Planet>(), RelationshipSprite.sprite, logEntry);
         }
 
-        UpdateOpinionGraphic();
     }
 
     private void UpdateOpinionGraphic()

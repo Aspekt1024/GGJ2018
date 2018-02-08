@@ -7,17 +7,28 @@ public class LogUI : MonoBehaviour
 {
     public RectTransform LogContent;
     public RectTransform ViewPort;
-    public RectTransform MessagePrefab;
     public Scrollbar VerticalScroll;
     public Text PlanetFeedIndicatorText;
 
+    public RectTransform PlayerMessagePrefab;
+    public RectTransform PlanetMessagePrefab;
+    public RectTransform StatusMessagePrefab;
+    
     private Planet planetFilter;
 
     private Vector2 startPos;
     private float yPadding = 10f;
+    private float xPadding = 14f;
 
-    private int numMessageObjects = 10;
+    private int numMessageObjects = 8;
     private LogMessage[] messageObjects;
+
+    private int numPlayerMessageObjects = 8;
+    private int numPlanetMessageObjects = 8;
+    private int numStatusMessageObjects = 8;
+    private PlayerLogMessage[] playerMessageObjects;
+    private PlanetLogMessage[] planetMessageObjects;
+    private StatusLogMessage[] statusMessageObjects;
 
     private Range prevRange;
     private bool resetLogs;
@@ -38,15 +49,44 @@ public class LogUI : MonoBehaviour
 
         resetLogs = false;
         prevRange = indexRange;
+
+        int planetObjectIndex = 0;
+        int playerObjectIndex = 0;
+        int statusObjectIndex = 0;
         for (int i = 0; i < indexRange.max - indexRange.min + 1; i++)
         {
+            Logger.LogEntry entry = logsToPrint[indexRange.max - i];
+            if (entry.MessageType == Logger.MessageTypes.Planet)
+            {
+                messageObjects[i] = planetMessageObjects[planetObjectIndex];
+                planetObjectIndex++;
+            }
+            else if (entry.MessageType == Logger.MessageTypes.Status)
+            {
+                messageObjects[i] = statusMessageObjects[statusObjectIndex];
+                statusObjectIndex++;
+            }
+            else
+            {
+                messageObjects[i] = playerMessageObjects[playerObjectIndex];
+                playerObjectIndex++;
+            }
+
             messageObjects[i].gameObject.SetActive(true);
-            PositionMessageObject(messageObjects[i], indexRange.min + i);
-            messageObjects[i].SetMessage(logsToPrint[indexRange.min + i]);
+            messageObjects[i].SetMessage(entry);
+            PositionMessageObject(messageObjects[i], logsToPrint.Count - 1 + i - indexRange.max);
         }
-        for (int i = indexRange.max - indexRange.min + 1; i < messageObjects.Length; i++)
+        for (int i = planetObjectIndex; i < planetMessageObjects.Length; i++)
         {
-            messageObjects[i].gameObject.SetActive(false);
+            planetMessageObjects[i].gameObject.SetActive(false);
+        }
+        for (int i = playerObjectIndex; i < playerMessageObjects.Length; i++)
+        {
+            playerMessageObjects[i].gameObject.SetActive(false);
+        }
+        for (int i = statusObjectIndex; i < statusMessageObjects.Length; i++)
+        {
+            statusMessageObjects[i].gameObject.SetActive(false);
         }
     }
 
@@ -79,14 +119,15 @@ public class LogUI : MonoBehaviour
         {
             foreach (var log in logs)
             {
-                if (log.Planet.gameObject == planetFilter.gameObject)
+                if (log.Planet == null || log.Planet.gameObject == planetFilter.gameObject)
                 {
                     logsToPrint.Add(log);
                 }
             }
         }
-        
-        float ySize = logsToPrint.Count * (yPadding + MessagePrefab.rect.size.y) + 10f;
+
+        // Note: All message prefabs must be the same height for this to work
+        float ySize = logsToPrint.Count * (yPadding + PlayerMessagePrefab.rect.size.y) + 10f;
         if (ySize < ViewPort.rect.height)
         {
             ySize = ViewPort.rect.height;
@@ -100,15 +141,26 @@ public class LogUI : MonoBehaviour
     private void CreateMessagePool()
     {
         messageObjects = new LogMessage[numMessageObjects];
-        for (int i = 0; i < messageObjects.Length; i++)
+        playerMessageObjects = new PlayerLogMessage[numPlayerMessageObjects];
+        planetMessageObjects = new PlanetLogMessage[numPlanetMessageObjects];
+        statusMessageObjects = new StatusLogMessage[numStatusMessageObjects];
+        for (int i = 0; i < playerMessageObjects.Length; i++)
         {
-            messageObjects[i] = CreateMessageObject();
+            playerMessageObjects[i] = (PlayerLogMessage)CreateMessageObject(PlayerMessagePrefab);
+        }
+        for (int i = 0; i < planetMessageObjects.Length; i++)
+        {
+            planetMessageObjects[i] = (PlanetLogMessage)CreateMessageObject(PlanetMessagePrefab);
+        }
+        for (int i = 0; i < statusMessageObjects.Length; i++)
+        {
+            statusMessageObjects[i] = (StatusLogMessage)CreateMessageObject(StatusMessagePrefab);
         }
     }
 
-    private LogMessage CreateMessageObject()
+    private LogMessage CreateMessageObject(RectTransform prefab)
     {
-        RectTransform newMessageRt = Instantiate(MessagePrefab);
+        RectTransform newMessageRt = Instantiate(prefab);
         LogMessage newMessage = newMessageRt.GetComponent<LogMessage>();
 
         newMessageRt.SetParent(LogContent);
@@ -122,14 +174,26 @@ public class LogUI : MonoBehaviour
     private void PositionMessageObject(LogMessage messageObject, int posFromBottom)
     {
         var messageRt = messageObject.GetComponent<RectTransform>();
-        messageObject.transform.localPosition = startPos + Vector2.up * posFromBottom * (messageRt.rect.size.y + yPadding);
+
+        float xPos = messageRt.rect.size.x / 2;
+        float xScrollbarPadding = 4f;
+        if (messageObject.Alignment == LogMessage.MessageAlignment.Right)
+        {
+            xPos = LogContent.rect.xMax - xPadding - xPos - xScrollbarPadding;
+        }
+        else
+        {
+            xPos = LogContent.rect.xMin + xPadding + xPos;
+        }
+        
+        float yPos = startPos.y + messageRt.rect.size.y / 2 + (yPadding + messageRt.rect.size.y) * posFromBottom;
+        messageObject.transform.localPosition = new Vector2(xPos, yPos);
     }
 
     private void RecalculateStartPos()
     {
-        float xOffset = 14f;
-        float xPos = LogContent.rect.xMin + xOffset + MessagePrefab.rect.size.x / 2;
-        float yPos = LogContent.rect.yMin + MessagePrefab.rect.size.y / 2 + yPadding;
+        float xPos = LogContent.rect.xMin + xPadding;
+        float yPos = LogContent.rect.yMin + yPadding;
 
         startPos = new Vector2(xPos, yPos);
     }
@@ -149,6 +213,13 @@ public class LogUI : MonoBehaviour
         };
         rng.min = Mathf.Clamp(rng.min, 0, logsToPrint.Count - 1);
         rng.max = Mathf.Clamp(rng.max, 0, logsToPrint.Count - 1);
+
+        int rMin = logsToPrint.Count - 1 - rng.max;
+        int rMax = logsToPrint.Count - 1 - rng.min;
+
+        rng.min = rMin;
+        rng.max = rMax;
+
         if (rng.max - rng.min + 1 > numMessageObjects)
         {
             if (rng.max == numMessageObjects - 1)
