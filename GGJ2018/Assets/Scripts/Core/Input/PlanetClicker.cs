@@ -10,12 +10,12 @@ public class PlanetClicker : MonoBehaviour
         bool clicked = false;
         Vector2 mousePos = Vector2.zero;
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
             clicked = true;
             mousePos = Input.touches[0].position;
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButtonDown(0))
         {
             clicked = true;
             mousePos = Input.mousePosition;
