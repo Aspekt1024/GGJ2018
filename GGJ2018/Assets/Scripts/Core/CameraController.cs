@@ -8,33 +8,32 @@ public class CameraController : MonoBehaviour {
     public float ZoomDuration = 1f;
 
     private int levelCount = 0;
-    private int[] scaleLevels = {10, 14, 18};
+    private int[] scaleLevels = {6, 10, 14, 18};
     public int[] NumberOfTransmissionsToAdvance = {3, 5, 5};
     private int transmissionCount = 0;
-
-
+    
     private Selection selection;
 
-    public void addTransmission()
+    public void AddTransmission()
     {
         transmissionCount++;
     }
-    
-    private float targetSize = 0;
+
+    public int GetNewOrthographicSize()
+    {
+        return scaleLevels[levelCount];
+    }
 
     private void Start()
     {
-        Camera.main.orthographicSize = 6;
+        Camera.main.orthographicSize = scaleLevels[0];
         selection = FindObjectOfType<Selection>();
         selection.numSymbols = 1;
-            
     }
     
-
-
     private void Update()
     {
-        if (levelCount >= scaleLevels.Length) return;
+        if (levelCount >= NumberOfTransmissionsToAdvance.Length) return;
 
         if(transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
         {
@@ -42,25 +41,9 @@ public class CameraController : MonoBehaviour {
         }
     }
     
-    private IEnumerator Grow()
-    {
-        float zoomTimer = 0f;
-        float startOrthSize = Camera.main.orthographicSize;
-        selection.numSymbols++;
-        while (zoomTimer < ZoomDuration)
-        {
-            zoomTimer += Time.deltaTime;
-            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
-            
-            yield return null;
-        }
-    }
-
     private void IncrementPhase()
     {
-        targetSize = scaleLevels[levelCount];
         StartCoroutine(Grow());
-        levelCount++;
         transmissionCount = 0;
 
         switch (levelCount)
@@ -79,6 +62,23 @@ public class CameraController : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+    }
+
+    private IEnumerator Grow()
+    {
+        float zoomTimer = 0f;
+        float startOrthSize = Camera.main.orthographicSize;
+        selection.numSymbols++;
+
+        levelCount++;
+        float targetSize = scaleLevels[levelCount];
+        while (zoomTimer < ZoomDuration)
+        {
+            zoomTimer += Time.deltaTime;
+            Camera.main.orthographicSize = Mathf.Lerp(startOrthSize, targetSize, zoomTimer / ZoomDuration);
+            
+            yield return null;
         }
     }
 

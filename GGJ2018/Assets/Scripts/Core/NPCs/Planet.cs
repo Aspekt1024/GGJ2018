@@ -59,15 +59,16 @@ public class Planet : MonoBehaviour {
 
     private void SetSymbolDict()
     {
+        float likesBias = 0.5f;
         for (int i = 0; i < NumSymbols; i++)
         {
             int newWeight = Random.Range(0, 2);
             if (newWeight == 0) newWeight = -1;
-            if (numHates >= NumSymbols / 2)
+            if (numHates >= NumSymbols * (1 - likesBias))
             {
                 newWeight = 1;
             }
-            else if (numLikes >= NumSymbols / 2)
+            else if (numLikes >= NumSymbols * likesBias)
             {
                 newWeight = -1;
             }

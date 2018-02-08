@@ -85,7 +85,7 @@ public class GameStats : MonoBehaviour
         numTransmissionsSent++;
         if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
         {
-            GameUI.HideTransmitButton();
+            GameUI.DisableTransmitButton();
             Invoke("ShowMaxTransmissionsEndgameUI", 4f);
         }
     }

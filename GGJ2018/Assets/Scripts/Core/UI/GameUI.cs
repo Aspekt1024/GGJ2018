@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour {
     
@@ -54,15 +55,14 @@ public class GameUI : MonoBehaviour {
         Instance.BatteryUI.SetBatteryPercentage(percent);
     }
 
-    public static void HideTransmitButton()
+    public static void DisableTransmitButton()
     {
-        Instance.TransmitButton.SetActive(false);
+        Instance.TransmitButton.GetComponent<Animator>().SetBool("IsOn", false);
     }
 
-    public static void ShowTransmitButton()
+    public static void EnableTransmitButton()
     {
-        Instance.TransmitButton.SetActive(true);
+        Instance.TransmitButton.GetComponent<Animator>().SetBool("IsOn", true);
     }
-
 
 }

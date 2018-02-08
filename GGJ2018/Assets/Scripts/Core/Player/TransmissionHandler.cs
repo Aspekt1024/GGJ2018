@@ -22,7 +22,7 @@ public class TransmissionHandler : MonoBehaviour {
         transmissionNumber++;
         Transmission newTransmission = ObjectPooler.Instance.GetPooledObject(ObjectPooler.Pools.Transmission.ToString()).GetComponent<Transmission>();
         newTransmission.Activate(TransmissionSpeed, TransmissionDuration, symbols);
-        controller.addTransmission();
+        controller.AddTransmission();
         GameUI.SetBatteryPercent((float) (GameStats.Instance.NumTransmissionsBeforeEnd -transmissionNumber) / GameStats.Instance.NumTransmissionsBeforeEnd);
 
         Logger.LogEntry entry = Logger.AddLog(symbols.ToArray());

@@ -28,7 +28,7 @@ public class Selection : MonoBehaviour {
             selectionIndicatorImages[i].enabled = false;
         }
 
-        GameUI.HideTransmitButton();
+        GameUI.DisableTransmitButton();
     }
 
     public void SetPhase(PlanetUnlocker.Phase phase)
@@ -71,7 +71,7 @@ public class Selection : MonoBehaviour {
 
         if (symbolsList.Count == numSymbols && GameStats.Instance.CanSendTransmission())
         {
-            GameUI.ShowTransmitButton();
+            GameUI.EnableTransmitButton();
         }
 
     }
@@ -94,7 +94,7 @@ public class Selection : MonoBehaviour {
 
         if (symbolsList.Count < numSymbols)
         {
-            GameUI.HideTransmitButton();
+            GameUI.DisableTransmitButton();
         }
 
         RepositionSelections();
