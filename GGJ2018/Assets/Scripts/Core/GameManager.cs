@@ -6,15 +6,9 @@ using System;
 public class GameManager : MonoBehaviour {
     
     [HideInInspector] public static GameManager Instance;
-    private SymbolHandler symbolHandler;
     private PlanetPrefabHandler planetPrefabs;
     private PlanetUnlocker planetUnlocker;
-
-    public SymbolHandler SymbolHandler
-    {
-        get { return symbolHandler; }
-    }
-
+    
     public PlanetPrefabHandler PlanetPrefabs
     {
         get { return planetPrefabs; }
@@ -56,7 +50,6 @@ public class GameManager : MonoBehaviour {
 
         planetUnlocker = GetComponent<PlanetUnlocker>();
         planetPrefabs = GetComponent<PlanetPrefabHandler>();
-        symbolHandler = GetComponent<SymbolHandler>();
         player = FindObjectOfType<Player>();
         inputHandler = new InputHandler(this);
         state = States.Playing;

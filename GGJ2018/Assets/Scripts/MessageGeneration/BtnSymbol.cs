@@ -20,7 +20,7 @@ public class BtnSymbol : MonoBehaviour {
         toggleState = GetComponent<Toggle>();
     }
 
-    public void setSymbol(Symbols symbols)
+    public void SetSymbol(Symbols symbols)
     {
         symbol = symbols;
         state = false;

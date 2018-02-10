@@ -2077,6 +2077,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 367a831980b8d5c4eb5368dae886dd81, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &803150029 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114803237364290794, guid: 367a831980b8d5c4eb5368dae886dd81,
+    type: 2}
+  m_PrefabInternal: {fileID: 803150028}
+  m_Script: {fileID: 11500000, guid: 721f188552c55d74abebe817877000dc, type: 3}
 --- !u!1 &806195221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3737,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1314441939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2b8fad6b38e6c4987b05c383582712, type: 3}
+  m_Script: {fileID: 11500000, guid: 197356f6f327023499e352ee691cf43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1314441944
@@ -3890,6 +3896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb09c827d6f0485428ddaec16ee68be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Phase0Planets:
+  - {fileID: 803150029}
   Phase1Planets:
   - {fileID: 833030137}
   - {fileID: 1406113387}

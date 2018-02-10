@@ -16,24 +16,17 @@ public class Planet : MonoBehaviour {
 
     private int opinion;
     private Dictionary<Symbols, int> symbolDict;   // symbol, weight
-    private SymbolHandler symbolHandler;
-
-    private int numHates;
-    private int numLikes;
-
+    
     private void Awake()
     {
-        symbolDict = new Dictionary<Symbols, int>();
         PlanetNameText.text = PlanetName;
     }
 
     private void Start()
     {
-        symbolHandler = GameManager.Instance.SymbolHandler;
         GameObject planetPrefab = Instantiate(GameManager.Instance.PlanetPrefabs.GetNewPlanet());
         planetPrefab.transform.SetParent(PlanetPrefab);
         planetPrefab.transform.position = transform.position;
-        SetSymbolDict();
     }
 
     public void GiveMessage(List<Symbols> symbols, Logger.LogEntry entry)
@@ -56,47 +49,14 @@ public class Planet : MonoBehaviour {
         opinion += messageOpinion;
         OpinionScript.SetOpinion(opinion, entry);
     }
-
-    private void SetSymbolDict()
+    
+    public void SetSymbolDict(Symbols[] symbols, int[] weights)
     {
-        float likesBias = 0.5f;
-        for (int i = 0; i < NumSymbols; i++)
+        symbolDict = new Dictionary<Symbols, int>();
+        for (int i = 0; i < symbols.Length; i++)
         {
-            int newWeight = Random.Range(0, 2);
-            if (newWeight == 0) newWeight = -1;
-            if (numHates >= NumSymbols * (1 - likesBias))
-            {
-                newWeight = 1;
-            }
-            else if (numLikes >= NumSymbols * likesBias)
-            {
-                newWeight = -1;
-            }
-
-            if (newWeight > 0) numLikes++;
-            if (newWeight < 0) numHates++;
-
-            Symbols newSymbol = GetNewSymbol();
-            if (newSymbol != null)
-            {
-                symbolDict.Add(newSymbol, newWeight);
-            }
+            symbolDict.Add(symbols[i], weights[i]);
         }
-    }
-
-    private Symbols GetNewSymbol()
-    {
-        if (symbolHandler.GetAllSymbols().Length == symbolDict.Count)
-        {
-            return null;
-        }
-        
-        int symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
-        while (symbolDict.ContainsKey(symbolHandler.GetAllSymbols()[symbolIndex]))
-        {
-            symbolIndex = Random.Range(0, symbolHandler.GetAllSymbols().Length);
-        }
-        return symbolHandler.GetAllSymbols()[symbolIndex];
     }
 
     public void Explode()

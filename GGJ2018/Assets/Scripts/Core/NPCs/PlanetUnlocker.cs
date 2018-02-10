@@ -10,6 +10,7 @@ public class PlanetUnlocker : MonoBehaviour {
         Phase0, Phase1, Phase2, Phase3
     }
 
+    public Planet[] Phase0Planets;
     public Planet[] Phase1Planets;
     public Planet[] Phase2Planets;
     public Planet[] Phase3Planets;
