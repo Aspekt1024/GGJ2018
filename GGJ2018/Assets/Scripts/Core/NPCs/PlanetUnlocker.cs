@@ -15,10 +15,14 @@ public class PlanetUnlocker : MonoBehaviour {
     public Planet[] Phase2Planets;
     public Planet[] Phase3Planets;
 
+    private List<Planet> unlockedPlanets;
+
     private CameraController cameraController;
 
     private void Start()
     {
+        unlockedPlanets = new List<Planet>();
+        AddPlanetsToUnlockedList(Phase0Planets);
         cameraController = FindObjectOfType<CameraController>();
     }
 
@@ -50,11 +54,12 @@ public class PlanetUnlocker : MonoBehaviour {
 
         Vector2 sizeWorldUnits = Camera.main.ViewportToWorldPoint(Vector2.one) - Camera.main.ViewportToWorldPoint(Vector2.zero);
         Vector2 newSize = new Vector2(sizeWorldUnits.x * sizeRatio, sizeWorldUnits.y * sizeRatio);
-
+        
         foreach (var planet in planetsToUnlock)
         {
             planet.gameObject.SetActive(true);
             CorrectPlanetPosition(planet.gameObject, newSize);
+            unlockedPlanets.Add(planet);
         }
     }
 
@@ -81,4 +86,16 @@ public class PlanetUnlocker : MonoBehaviour {
         }
     }
 
+    public Planet[] GetUnlockedPlanets()
+    {
+        return unlockedPlanets.ToArray();
+    }
+
+    private void AddPlanetsToUnlockedList(Planet[] planets)
+    {
+        foreach (var planet in planets)
+        {
+            unlockedPlanets.Add(planet);
+        }
+    }
 }

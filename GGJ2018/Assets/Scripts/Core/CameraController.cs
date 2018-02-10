@@ -17,6 +17,12 @@ public class CameraController : MonoBehaviour {
     public void AddTransmission()
     {
         transmissionCount++;
+        if (levelCount >= NumberOfTransmissionsToAdvance.Length) return;
+
+        if (transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
+        {
+            IncrementPhase();
+        }
     }
 
     public int GetNewOrthographicSize()
@@ -29,16 +35,6 @@ public class CameraController : MonoBehaviour {
         Camera.main.orthographicSize = scaleLevels[0];
         selection = FindObjectOfType<Selection>();
         selection.numSymbols = 1;
-    }
-    
-    private void Update()
-    {
-        if (levelCount >= NumberOfTransmissionsToAdvance.Length) return;
-
-        if(transmissionCount >= NumberOfTransmissionsToAdvance[levelCount])
-        {
-            IncrementPhase();
-        }
     }
     
     private void IncrementPhase()

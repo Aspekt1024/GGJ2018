@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Transmission : MonoBehaviour {
     
-    private HashSet<Planet> planetsHit;
     private float growSpeed;
     private float duration;
     private float size;
@@ -12,6 +11,8 @@ public class Transmission : MonoBehaviour {
     private TransmissionRenderer txRenderer;
     private List<Symbols> symbols;
     private Logger.LogEntry logEntry;
+
+    private Dictionary<Planet, bool> planetsToReach;
 
     private void Awake()
     {
@@ -24,7 +25,15 @@ public class Transmission : MonoBehaviour {
         {
             txRenderer = GetComponent<TransmissionRenderer>();
         }
-        planetsHit = new HashSet<Planet>();
+    }
+
+    public void SetPlanetsToReach(Planet[] planets)
+    {
+        planetsToReach = new Dictionary<Planet, bool>();
+        foreach (var planet in planets)
+        {
+            planetsToReach.Add(planet, false);
+        }
     }
 
     public void Activate(float speed, float duration, List<Symbols> symbols)
@@ -68,10 +77,13 @@ public class Transmission : MonoBehaviour {
                 Planet planet = collider.GetComponent<Planet>();
                 if (planet != null)
                 {
-                    if (Vector2.Distance(planet.transform.position, GameManager.Instance.Player.transform.position) > size - 1f && !planetsHit.Contains(planet))
+                    if (Vector2.Distance(planet.transform.position, GameManager.Instance.Player.transform.position) > size - 1f)
                     {
-                        planet.GiveMessage(symbols, logEntry);
-                        planetsHit.Add(planet);
+                        if (planetsToReach.ContainsKey(planet) && planetsToReach[planet] == false)
+                        {
+                            planet.GiveMessage(symbols, logEntry);
+                            planetsToReach[planet] = true;
+                        }
                     }
                 }
             }

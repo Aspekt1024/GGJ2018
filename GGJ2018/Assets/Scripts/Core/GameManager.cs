@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour {
     {
         Instance.planetUnlocker.UnlockPhase(phase);
     }
+
+    public Planet[] GetUnlockedPlanets()
+    {
+        return planetUnlocker.GetUnlockedPlanets();
+    }
 #endregion
 
 }
