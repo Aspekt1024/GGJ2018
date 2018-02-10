@@ -80,14 +80,15 @@ public class GameStats : MonoBehaviour
         return netOpinion;
     }
 
-    public void SentTransmission()
+    public bool SentTransmission()
     {
         numTransmissionsSent++;
         if (EndGameAfterTransmissions && numTransmissionsSent >= NumTransmissionsBeforeEnd)
         {
             GameUI.DisableTransmitButton();
-            Invoke("ShowMaxTransmissionsEndgameUI", 4f);
+            return true;
         }
+        return false;
     }
 
     public bool CanSendTransmission()
@@ -97,11 +98,6 @@ public class GameStats : MonoBehaviour
             return false;
         }
         return true;
-    }
-
-    private void ShowMaxTransmissionsEndgameUI()
-    {
-        GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
     }
 
     private void CalculateNetOpinion()

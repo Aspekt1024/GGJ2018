@@ -30,6 +30,11 @@ public class TransmissionHandler : MonoBehaviour {
 
         Logger.LogEntry entry = Logger.AddLog(symbols.ToArray());
         newTransmission.SetLogEntry(entry);
-        GameStats.Instance.SentTransmission();
+        bool endGame = GameStats.Instance.SentTransmission();
+
+        if (endGame)
+        {
+            newTransmission.EndAfterAllPlanetsReached();
+        }
     }
 }

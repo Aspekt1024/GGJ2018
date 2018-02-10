@@ -13,6 +13,7 @@ public class Transmission : MonoBehaviour {
     private Logger.LogEntry logEntry;
 
     private Dictionary<Planet, bool> planetsToReach;
+    private bool endAfterPlanetsReached;
 
     private void Awake()
     {
@@ -55,6 +56,11 @@ public class Transmission : MonoBehaviour {
         logEntry = entry;
     }
 
+    public void EndAfterAllPlanetsReached()
+    {
+        endAfterPlanetsReached = true;
+    }
+
     private void Update()
     {
         elapsedTime += Time.deltaTime;
@@ -82,6 +88,21 @@ public class Transmission : MonoBehaviour {
                 }
             }
         }
+
+        CheckAllPlanetsReached();
+    }
+
+    private void CheckAllPlanetsReached()
+    {
+        if (endAfterPlanetsReached && !planetsToReach.ContainsValue(false))
+        {
+            Invoke("ShowEndGame", 2f);
+        }
+    }
+
+    private void ShowEndGame()
+    {
+        GameUI.ShowEndGameUI(EndGameUI.EndGameUITypes.MaxTurnsReached);
     }
 
 }
