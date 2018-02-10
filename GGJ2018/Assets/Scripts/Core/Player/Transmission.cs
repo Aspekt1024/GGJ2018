@@ -75,16 +75,10 @@ public class Transmission : MonoBehaviour {
             foreach (Collider2D collider in hit)
             {
                 Planet planet = collider.GetComponent<Planet>();
-                if (planet != null)
+                if (planet != null && planetsToReach.ContainsKey(planet) && planetsToReach[planet] == false)
                 {
-                    if (Vector2.Distance(planet.transform.position, GameManager.Instance.Player.transform.position) > size - 1f)
-                    {
-                        if (planetsToReach.ContainsKey(planet) && planetsToReach[planet] == false)
-                        {
-                            planet.GiveMessage(symbols, logEntry);
-                            planetsToReach[planet] = true;
-                        }
-                    }
+                    planet.GiveMessage(symbols, logEntry);
+                    planetsToReach[planet] = true;
                 }
             }
         }

@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class InputHandler
 {
-
-    private enum InputMode
-    {
-        Keyboard, Controller
-    }
-    private InputMode mode;
-
     private GameManager gameManager;
 
     public InputHandler(GameManager manager)

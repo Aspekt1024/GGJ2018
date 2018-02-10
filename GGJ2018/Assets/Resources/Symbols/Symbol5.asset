@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a5d574afd23a2458653ec397c2f86d, type: 3}
   m_Name: Symbol5
   m_EditorClassIdentifier: 
-  Name: 
-  Sprite: {fileID: 0}
+  Name: S5
+  Sprite: {fileID: 21300000, guid: 9f1132791335b10479f5fd7f0e204efd, type: 3}
   IsEnabled: 0
